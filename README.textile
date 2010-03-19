@@ -1,0 +1,10 @@
+h1. Charles' Dot Files
+
+Configuration of my system the way I like it.
+
+h2. Installation
+
+bc. git clone git://github.com/zorab47/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+rake install
+
