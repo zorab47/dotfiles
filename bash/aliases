@@ -1,0 +1,27 @@
+# some more ls aliases
+alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
+
+alias screen='TERM=screen screen'
+
+alias rdm='rake db:migrate'
+alias e='vim'
+alias migrate_all='rake db:migrate; rake db:migrate RAILS_ENV=test'
+
+# git
+alias gd='git diff'
+alias gdh='git diff HEAD'
+alias gl='git pull'
+alias gp='git push'
+alias gpp='git pull; git push'
+alias gs='git status'
+alias gst='git status'
+
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ]; then
+    eval "`dircolors -b`"
+    alias ls='ls --color=auto'
+fi
+
+# vim: syntax=sh

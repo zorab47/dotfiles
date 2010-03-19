@@ -1,0 +1,2 @@
+hardstatus on
+hardstatus alwayslastline "%H %`%-w%{=b bw}%n %t%{-}%+w"
