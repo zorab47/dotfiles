@@ -3,11 +3,12 @@ alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
 
+# cd
+alias ..='cd ..'
+
 alias screen='TERM=screen screen'
 
-alias rdm='rake db:migrate'
 alias e='vim'
-alias migrate_all='rake db:migrate; rake db:migrate RAILS_ENV=test'
 
 # git
 alias gd='git diff'
@@ -17,6 +18,41 @@ alias gp='git push'
 alias gpp='git pull; git push'
 alias gs='git status'
 alias gst='git status'
+
+# rails
+alias sc='script/console'
+alias scprod='script/console production'
+alias ss='script/server'
+alias sg='script/generate'
+alias sdb='script/dbconsole'
+alias tlog='tail -f log/development.log'
+alias rst='touch tmp/restart.txt'
+
+# rails testing
+alias rt='rake --trace'
+alias rtf='rake test:functionals --trace'
+alias rti='rake test:integration --trace'
+alias rtl='rake test:lib --trace'
+alias rtp='rake test:plugins --trace'
+alias rtu='rake test:units --trace'
+
+alias rrcov='rake coverage:all:test'
+alias rrrcovall='rake test:coverage:all:test'
+
+# rails migration
+alias rdm='rake db:migrate'
+alias rdtp='rake db:test:prepare'
+alias rdfl='rake db:fixtures:load'
+alias rdr='rake db:rollback'
+alias migrate_all='rake db:migrate; rake db:migrate RAILS_ENV=test'
+
+
+alias rroutes='rake routes'
+alias mroutes='rroutes | vim'
+
+# capistrano
+alias csd='cap staging deploy'
+
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
