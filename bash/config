@@ -3,6 +3,9 @@ umask 022
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoreboth
 
+# set default editor to vim
+export EDITOR=vim
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
