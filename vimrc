@@ -1,12 +1,18 @@
 set nocompatible
 
+call pathogen#runtime_append_all_bundles()
+
 set backspace=2
 set background=dark
 set autoindent
 set nowrap
 set modeline
-set number		" show line numbers
-set showcmd		" display incomplete commands
+set number    " show line numbers
+set showcmd   " display incomplete commands
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 filetype plugin indent on
 syntax on
@@ -20,6 +26,14 @@ command! WN wN      " converts ... :WN => :wN
 
 " Remove trailing whitespace using F5
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" Open NERDTree
+map <F10> :NERDTreeFind<CR>
+
+" Ignore F1 (help)
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
 " Duplicated selected text using v_D
 vmap D y'>p
