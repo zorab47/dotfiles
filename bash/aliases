@@ -1,3 +1,7 @@
+
+# Remove non-alpha characters: darwin10.0 -> darwin
+OS=`echo $OSTYPE | sed "s/[^a-zA-Z-]//g"`
+
 # some more ls aliases
 alias ll='ls -l'
 #alias la='ls -A'
@@ -53,11 +57,17 @@ alias mroutes='rroutes | vim'
 # capistrano
 alias csd='cap staging deploy'
 
-
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+    if which dircolors &> /dev/null; then
+      eval "`dircolors -b`"
+    fi
+
+    if [[ $OS == "darwin" ]]; then
+      alias ls='ls -G'
+    else
+      alias ls='ls --color=auto'
+    fi
 fi
 
 # vim: syntax=sh
