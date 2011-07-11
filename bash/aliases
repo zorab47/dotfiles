@@ -4,15 +4,17 @@ OS=`echo $OSTYPE | sed "s/[^a-zA-Z-]//g"`
 
 # some more ls aliases
 alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias l='ls -CF'
 
 # cd
 alias ..='cd ..'
 
-alias screen='TERM=screen screen'
+alias screen='screen -T $TERM'
 
 alias e='vim'
+
+alias less="less -FrX"
+alias hi="history | tail -25"
 
 # git
 alias gd='git diff'
@@ -50,6 +52,8 @@ alias rdfl='rake db:fixtures:load'
 alias rdr='rake db:rollback'
 alias migrate_all='rake db:migrate; rake db:migrate RAILS_ENV=test'
 
+# watchr
+alias rw='bundle exec rake watchr'
 
 alias rroutes='rake routes'
 alias mroutes='rroutes | vim'
@@ -64,9 +68,9 @@ if [ "$TERM" != "dumb" ]; then
     fi
 
     if [[ $OS == "darwin" ]]; then
-      alias ls='ls -G'
+      alias ls='ls -Gh'
     else
-      alias ls='ls --color=auto'
+      alias ls='ls --color=auto -hB'
     fi
 fi
 

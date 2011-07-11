@@ -14,8 +14,21 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set wildignore=*.swp
+set nobackup
+set title     " change the terminal's title
+
 filetype plugin indent on
 syntax on
+
+set background=dark
+
+if &t_Co < 256
+  colorscheme bluegreen
+else
+  let g:solarized_termcolors=256
+  colorscheme solarized
+endif
 
 " Common Command Typos
 command! Q  quit    " converts ... :Q  => :q

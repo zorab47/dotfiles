@@ -1,2 +1,35 @@
+# -------------------------------------------------------------------
+# Settings
+# -------------------------------------------------------------------
+crlf off            # No Microsoft linebreaks
+startup_message off # bypass GPL notice (we're aware)
+defscrollback 15000 # big scrollback
+shell bash          # don't start login shells
+shelltitle ""       # no title by default - set in PS1
+bell_msg "DING! (%n)"
+vbell_msg "DING! (%n)"
+vbell off
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+autodetach on
+defutf8 on
+defbce on # erase background with current bg color
+
 hardstatus on
 hardstatus alwayslastline "%H %`%-w%{=b bw}%n %t%{-}%+w"
+
+termcapinfo screen*|xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# xterm understands both im/ic and doesn't have a status line.
+# Note: Do not specify im and ic in the real termcap/info file as
+# some programs (e.g. vi) will not work anymore.
+termcap xterm 'hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l'
+terminfo xterm 'hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l'
+termcap xterm-color 'hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l'
+terminfo xterm-color 'hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l'
+
+# this makes backspace sane on debian systems
+termcapinfo xterm 'bc@:bs@'
+termcapinfo xterm-color 'bc@:bs@'
