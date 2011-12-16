@@ -34,5 +34,13 @@ xterm*|rxvt*)
     ;;
 esac
 
+dircolors=$HOME/.dircolors-$(tput colors)
+
+if [[ -f $dircolors ]]; then
+    eval $(dircolors -b $dircolors)
+else
+    eval $(dircolors)
+fi
+
 
 # vim: syntax=sh

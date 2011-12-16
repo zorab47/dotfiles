@@ -16,8 +16,11 @@ alias e='vim'
 alias less="less -FrX"
 alias hi="history | tail -25"
 
+alias brt="bundle exec rake test"
+
 # git
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gdh='git diff HEAD'
 alias gl='git pull'
 alias gp='git push'
@@ -50,7 +53,7 @@ alias rdm='rake db:migrate'
 alias rdtp='rake db:test:prepare'
 alias rdfl='rake db:fixtures:load'
 alias rdr='rake db:rollback'
-alias migrate_all='rake db:migrate; rake db:migrate RAILS_ENV=test'
+alias migrate_all='bundle exec rake db:migrate; bundle exec rake db:migrate RAILS_ENV=test'
 
 # watchr
 alias rw='bundle exec rake watchr'
