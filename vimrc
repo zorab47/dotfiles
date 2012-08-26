@@ -30,6 +30,10 @@ else
   colorscheme solarized
 endif
 
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
+
 " Common Command Typos
 command! Q  quit    " converts ... :Q  => :q
 command! W  write   " converts ... :W  => :w
