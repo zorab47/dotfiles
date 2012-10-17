@@ -34,6 +34,9 @@ if exists('+colorcolumn')
   set colorcolumn=80
 endif
 
+" Markdown specifics
+autocmd FileType markdown set ts=4 sw=4 expandtab linebreak wrap
+
 " Common Command Typos
 command! Q  quit    " converts ... :Q  => :q
 command! W  write   " converts ... :W  => :w
