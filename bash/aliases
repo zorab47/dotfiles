@@ -12,6 +12,7 @@ alias ..='cd ..'
 alias screen='screen -T $TERM'
 
 alias e='vim'
+alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'
 
 alias less="less -FrX"
 alias hi="history | tail -25"
@@ -27,13 +28,10 @@ alias gp='git push'
 alias gpp='git pull; git push'
 alias gs='git status'
 alias gst='git status'
+alias gap='git add --patch'
+alias gadd='git add'
 
 # rails
-alias sc='script/console'
-alias scprod='script/console production'
-alias ss='script/server'
-alias sg='script/generate'
-alias sdb='script/dbconsole'
 alias tlog='tail -f log/development.log'
 alias rst='touch tmp/restart.txt'
 
@@ -54,6 +52,7 @@ alias rdtp='rake db:test:prepare'
 alias rdfl='rake db:fixtures:load'
 alias rdr='rake db:rollback'
 alias migrate_all='bundle exec rake db:migrate; bundle exec rake db:migrate RAILS_ENV=test'
+alias rdmt='bake RAILS_ENV=test db:drop db:create db:schema:load'
 
 # watchr
 alias rw='bundle exec rake watchr'
@@ -63,6 +62,14 @@ alias mroutes='rroutes | vim'
 
 # capistrano
 alias csd='cap staging deploy'
+
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then

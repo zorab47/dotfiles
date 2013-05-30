@@ -1,6 +1,4 @@
 require 'rubygems'
-require 'wirble'
 require 'pp'
+require 'brice/init'
 
-Wirble.init
-Wirble.colorize

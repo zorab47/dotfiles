@@ -33,3 +33,9 @@ terminfo xterm-color 'hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l'
 # this makes backspace sane on debian systems
 termcapinfo xterm 'bc@:bs@'
 termcapinfo xterm-color 'bc@:bs@'
+
+screen -t server 0
+screen -t zeus 1
+screen -t test 2
+screen -t vim 3
+screen -t console 4

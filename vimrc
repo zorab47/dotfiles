@@ -9,6 +9,7 @@ set nowrap
 set modeline
 set number    " show line numbers
 set showcmd   " display incomplete commands
+set cursorline
 
 set tabstop=2
 set shiftwidth=2
