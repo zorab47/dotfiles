@@ -50,6 +50,7 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 
 " Open NERDTree
 map <F10> :NERDTreeFind<CR>
+map <F9> :NERDTreeFind<CR>
 
 " Ignore F1 (help)
 inoremap <F1> <ESC>

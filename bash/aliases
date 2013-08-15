@@ -20,6 +20,7 @@ alias hi="history | tail -25"
 alias brt="bundle exec rake test"
 
 # git
+alias gcv='git commit -v'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD'
