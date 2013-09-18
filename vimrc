@@ -10,6 +10,7 @@ set modeline
 set number    " show line numbers
 set showcmd   " display incomplete commands
 set cursorline
+" set cursorcolumn " highlights column with the cursor
 
 set tabstop=2
 set shiftwidth=2
@@ -18,6 +19,8 @@ set expandtab
 set wildignore=*.swp
 set nobackup
 set title     " change the terminal's title
+set list
+set listchars=trail:·,tab:»\ 
 
 filetype plugin indent on
 syntax on
@@ -36,7 +39,7 @@ if exists('+colorcolumn')
 endif
 
 " Markdown specifics
-autocmd FileType markdown set ts=4 sw=4 expandtab linebreak wrap
+autocmd FileType markdown set ts=4 sw=4 expandtab linebreak wrap spell
 
 " Common Command Typos
 command! Q  quit    " converts ... :Q  => :q
@@ -46,7 +49,7 @@ command! Wn wn      " converts ... :Wn => :wn
 command! WN wN      " converts ... :WN => :wN
 
 " Remove trailing whitespace using F5
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Open NERDTree
 map <F10> :NERDTreeFind<CR>
@@ -59,6 +62,8 @@ vnoremap <F1> <ESC>
 
 " Duplicated selected text using v_D
 vmap D y'>p
+
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Leader shortcuts for Rails commands
 map <Leader>m :Rmodel
@@ -79,3 +84,5 @@ map <Leader>sv :RSview
 map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 map <Leader>si :RSintegrationtest
+
+map <Leader>t :call RunCurrentSpecFile()<CR>
