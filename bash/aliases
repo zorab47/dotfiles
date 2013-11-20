@@ -41,7 +41,6 @@ alias rt='rake --trace'
 alias rtf='rake test:functionals --trace'
 alias rti='rake test:integration --trace'
 alias rtl='rake test:lib --trace'
-alias rtp='rake test:plugins --trace'
 alias rtu='rake test:units --trace'
 
 alias rrcov='rake coverage:all:test'
@@ -49,10 +48,10 @@ alias rrrcovall='rake test:coverage:all:test'
 
 # rails migration
 alias rdm='rake db:migrate'
-alias rdtp='rake db:test:prepare'
+alias rtp='rake db:test:prepare'
 alias rdfl='rake db:fixtures:load'
 alias rdr='rake db:rollback'
-alias migrate_all='bundle exec rake db:migrate; bundle exec rake db:migrate RAILS_ENV=test'
+alias migrate_all='rake db:migrate; rake db:test:prepare'
 alias rdmt='bake RAILS_ENV=test db:drop db:create db:schema:load'
 
 # watchr
