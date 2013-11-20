@@ -86,3 +86,9 @@ map <Leader>sf :RSfunctionaltest
 map <Leader>si :RSintegrationtest
 
 map <Leader>t :call RunCurrentSpecFile()<CR>
+
+" Enable spellchecking for Markdown and wrap at 80 characters.
+autocmd FileType markdown setlocal spell textwidth=80 complete+=kspell
+
+" Enable spellchecking for gitcommits
+autocmd FileType gitcommit setlocal spell complete+=kspell
