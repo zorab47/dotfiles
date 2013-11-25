@@ -85,7 +85,11 @@ map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 map <Leader>si :RSintegrationtest
 
+map <Leader>n :sp ~/todo.md<CR>
+nnoremap <C-W>e :tabe<cr>
+
 map <Leader>t :call RunCurrentSpecFile()<CR>
+let g:rspec_command = "!bundle exec rspec {spec}"
 
 " Enable spellchecking for Markdown and wrap at 80 characters.
 autocmd FileType markdown setlocal spell textwidth=80 complete+=kspell
