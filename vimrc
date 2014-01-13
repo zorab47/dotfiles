@@ -35,11 +35,11 @@ else
 endif
 
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=81
 endif
 
 " Markdown specifics
-autocmd FileType markdown set ts=4 sw=4 expandtab linebreak wrap spell
+autocmd FileType markdown setlocal ts=4 sw=4 expandtab linebreak wrap spell
 
 " Common Command Typos
 command! Q  quit    " converts ... :Q  => :q
