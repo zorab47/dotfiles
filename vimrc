@@ -51,7 +51,6 @@ endif
 set foldenable
 set foldlevelstart=10   " open most folds by default to
 set foldnestmax=10      " 10 nested fold max
-set foldmethod=syntax   " fold by syntax
 " }}}
 " Leader Shortcuts {{{
 " open NerdTree
