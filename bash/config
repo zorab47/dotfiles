@@ -48,4 +48,9 @@ if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
+# Setup autojump, a faster way to navigate directories.
+if command -v autojump >/dev/null 2>&1; then
+  source /usr/share/autojump/autojump.bash
+fi
+
 # vim: syntax=sh
