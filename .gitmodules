@@ -28,6 +28,12 @@
 [submodule "vim/bundle/vim-textobj-rubyblock"]
 	path = vim/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
-[submodule "vim/plugin/vim-dragvisuals"]
-	path = vim/plugin/vim-dragvisuals
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/delimitMate"]
+	path = vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "vim/bundle/vim-dragvisuals"]
+	path = vim/bundle/vim-dragvisuals
 	url = https://github.com/atweiden/vim-dragvisuals.git
