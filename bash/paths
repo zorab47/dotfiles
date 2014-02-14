@@ -1,4 +1,4 @@
 # Paths for bundler's binstubs, rbenv, and user bin
-export PATH="./bin:$HOME/.rbenv/bin:$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.rbenv/bin:$PATH"
 
 # vim: syntax=sh
