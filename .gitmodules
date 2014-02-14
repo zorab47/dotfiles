@@ -40,3 +40,9 @@
 [submodule "vim/bundle/vim-dragvisuals"]
 	path = vim/bundle/vim-dragvisuals
 	url = https://github.com/atweiden/vim-dragvisuals.git
+[submodule "vim/bundle/vim-wordy"]
+	path = vim/bundle/vim-wordy
+	url = https://github.com/reedes/vim-wordy.git
+[submodule "vim/bundle/vim-pencil"]
+	path = vim/bundle/vim-pencil
+	url = https://github.com/reedes/vim-pencil.git
