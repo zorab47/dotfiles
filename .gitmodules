@@ -55,3 +55,6 @@
 [submodule "vim/bundle/vim-pencil"]
 	path = vim/bundle/vim-pencil
 	url = https://github.com/reedes/vim-pencil.git
+[submodule "vim/bundle/vim-fontsize"]
+	path = vim/bundle/vim-fontsize
+	url = https://github.com/drmikehenry/vim-fontsize.git
