@@ -61,3 +61,6 @@
 [submodule "vim/bundle/vim-gams"]
 	path = vim/bundle/vim-gams
 	url = https://github.com/zorab47/gamsvim.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = https://github.com/thomwiggers/vim-colors-solarized.git
