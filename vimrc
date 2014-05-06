@@ -39,6 +39,9 @@ set listchars=trail:·,tab:»\  " display tabs as » and trailing spaces as ·
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set ttyfast
+set scrolloff=3               " keep cursor line from the bottom of the window
+set splitright                " Opens vertical split right of current window
+set splitbelow                " Opens horizontal split below current window
 filetype plugin indent on     " load filetype-specific indent and plugin files
 
 if exists('+colorcolumn')
@@ -86,6 +89,15 @@ map <Leader>sc :RScontroller
 map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 map <Leader>si :RSintegrationtest
+
+" if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a{ :Tabularize /{<CR>
+  nmap <Leader>a{ :Tabularize /{<CR>
+" endif
 " }}}
 " Custom Key Mappings {{{
 " quickly open new tabs
@@ -136,6 +148,13 @@ augroup configgroup
 
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
+
+  " Use Ruby syntax on Arbre template files
+  autocmd BufRead,BufNewFile *.arb setfiletype ruby
+
+  " Use Ruby syntax on Capistrano files
+  autocmd BufRead,BufNewFile *.cap setfiletype ruby
+
 augroup END
 " }}}
 " Backups {{{
