@@ -42,6 +42,8 @@ set ttyfast
 set scrolloff=3               " keep cursor line from the bottom of the window
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
+set laststatus=2              " Always show status line of last window
+" set noshowmode                " Don't show the default line, intead use Airline
 filetype plugin indent on     " load filetype-specific indent and plugin files
 
 if exists('+colorcolumn')
