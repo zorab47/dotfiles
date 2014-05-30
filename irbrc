@@ -8,6 +8,8 @@ require 'rubygems'
 require 'pp'
 require 'brice/init'
 require 'awesome_print'
+require 'hirb'
+AwesomePrint.defaults = { indent: 2 }
 AwesomePrint.irb! if defined? AwesomePrint
 
 def source_for(object, method_sym)
