@@ -32,6 +32,12 @@ task :install do
       link_file(file)
     end
   end
+
+  setup_git_submodules
+end
+
+def setup_git_submodules
+  system %Q{git submodule update --init}
 end
 
 def replace_file(file)
