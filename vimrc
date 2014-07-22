@@ -17,6 +17,9 @@ endif
 " Misc {{{
 set backspace=indent,eol,start
 " }}}
+" Digraphs {{{
+digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'
+" }}}
 " Spaces & Tabs {{{
 set tabstop=2                 " number of visual spaces per TAB
 set softtabstop=2             " number of spaces in TAB when editing
@@ -35,11 +38,11 @@ set title                     " change the terminal's title
 set wildmenu                  " visual autocomplete for command menu
 set wildignore=*.swp          " ignore swp files in completion
 set list                      " show whitespace chars
-set listchars=trail:·,tab:»\  " display tabs as » and trailing spaces as ·
+set listchars=tab:»\ ,trail:·  " display tabs as » and trailing spaces as ·
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set ttyfast
-set scrolloff=3               " keep cursor line from the bottom of the window
+set scrolloff=7               " keep cursor line from the bottom of the window
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
 set laststatus=2              " Always show status line of last window
@@ -99,6 +102,7 @@ map <Leader>si :RSintegrationtest
   vmap <Leader>a: :Tabularize /:\zs<CR>
   vmap <Leader>a{ :Tabularize /{<CR>
   nmap <Leader>a{ :Tabularize /{<CR>
+  nmap <Leader>a> :Tabularize /=><CR>
 " endif
 " }}}
 " Custom Key Mappings {{{
@@ -128,6 +132,10 @@ vnoremap <F1> <ESC>
 " }}}
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
+" }}}
+" Ctrl-P {{{
+let g:ctrlp_max_height = 20            " provide more space to display results
+set wildignore+=tmp/**,*.scssc,*.sassc " ignore tmp files and Sass caches
 " }}}
 " Dragvisuals {{{
 vmap  <expr>  <LEFT>   DVB_Drag('left')
@@ -167,16 +175,24 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 " Custom Commands {{{
-" Highlight words to avoid in tech writing
-" =======================================
-"
-"   obviously, basically, simply, of course, clearly,
-"   just, everyone knows, However, So, easy
-"
-"   http://css-tricks.com/words-avoid-educational-writing/
+augroup vimrcEx
+  autocmd!
 
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|\(\W\|^\)\@<=just\(\W\)\@=\(\W\)\@<!\|everyone\sknows\|however\|so,\|easy/ 
+  " Open nerdtree if no args
+  autocmd VimEnter * if !argc() | NERDTree | endif
+
+  " Resize splits when the window is resized
+  autocmd VimResized * :wincmd =
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+augroup END
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
