@@ -54,10 +54,12 @@ esac
 
 dircolors=$HOME/.dircolors-$(tput colors)
 
-if [[ -f $dircolors ]]; then
-    eval $(dircolors -b $dircolors)
-else
-    eval $(dircolors)
+if command -v dircolors >/dev/null 2>&1; then
+  if [[ -f $dircolors ]]; then
+      eval $(dircolors -b $dircolors)
+  else
+      eval $(dircolors)
+  fi
 fi
 
 MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
