@@ -6,11 +6,20 @@ end
 
 require 'rubygems'
 require 'pp'
-require 'brice/init'
-require 'awesome_print'
-require 'hirb'
-AwesomePrint.defaults = { indent: 2 }
-AwesomePrint.irb! if defined? AwesomePrint
+
+begin
+  require 'brice/init'
+  require 'awesome_print'
+  require 'hirb'
+  require 'looksee'
+  AwesomePrint.defaults = { indent: 2 }
+  AwesomePrint.irb! if defined? AwesomePrint
+rescue LoadError
+  puts "# Ensure Brice, AwesomePrint, Hirb, and Looksee for the best irb experience."
+  puts "#"
+  puts "#   gem install brice awesome_print hirb looksee"
+  puts ""
+end
 
 def source_for(object, method_sym)
   if object.respond_to?(method_sym, true)
