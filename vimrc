@@ -42,6 +42,7 @@ set listchars=tab:»\ ,trail:·  " display tabs as » and trailing spaces as ·
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set ttyfast
+set shortmess=atI             " Don’t show the intro message when starting Vim
 set scrolloff=7               " keep cursor line from the bottom of the window
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
@@ -130,12 +131,34 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 " }}}
+" NERD Tree {{{
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" }}}
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
+"mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+""automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0
+"show the error list automatically
+let g:syntastic_auto_loc_list=1
+"don't care about warnings
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 " }}}
 " Ctrl-P {{{
 let g:ctrlp_max_height = 20            " provide more space to display results
-set wildignore+=tmp/**,*.scssc,*.sassc " ignore tmp files and Sass caches
+set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
+
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command =
+    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " }}}
 " Dragvisuals {{{
 vmap  <expr>  <LEFT>   DVB_Drag('left')
