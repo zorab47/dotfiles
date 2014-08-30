@@ -19,6 +19,9 @@ alias hi="history | tail -25"
 
 alias brt="bundle exec rake test"
 
+# foreman
+alias fr='foreman run'
+
 # git
 alias gcv='git commit -v'
 alias gd='git diff'
@@ -31,6 +34,7 @@ alias gs='git status'
 alias gst='git status'
 alias gap='git add --patch'
 alias gadd='git add'
+alias gg='git grep'
 
 # rails
 alias tlog='tail -f log/development.log'
@@ -47,9 +51,7 @@ alias rrcov='rake coverage:all:test'
 alias rrrcovall='rake test:coverage:all:test'
 
 # rails migration
-alias rdm='rake db:migrate'
-alias rtp='rake db:test:prepare'
-alias rdfl='rake db:fixtures:load'
+alias rdm='rake db:migrate db:test:prepare'
 alias rdr='rake db:rollback'
 alias migrate_all='rake db:migrate; rake db:test:prepare'
 alias rdmt='bake RAILS_ENV=test db:drop db:create db:schema:load'
@@ -63,11 +65,13 @@ alias mroutes='rroutes | vim'
 # capistrano
 alias csd='cap staging deploy'
 
+alias open='xdg-open'
+
 function g {
   if [[ $# > 0 ]]; then
     git $@
   else
-    git status
+    git status -s
   fi
 }
 

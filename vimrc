@@ -16,6 +16,7 @@ endif
 " }}}
 " Misc {{{
 set backspace=indent,eol,start
+set noesckeys                 " Get rid of the delay when hitting esc!
 " }}}
 " Digraphs {{{
 digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'
@@ -66,11 +67,17 @@ set foldnestmax=10      " 10 nested fold max
 nnoremap <leader>b :NERDTreeFind<CR>
 
 " edit vimrc and load vimrc bindings
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " edit global todo list
-map <Leader>n :vsp ~/todo.md<CR>
+map <Leader>n :tabe ~/todo.md<CR>
+
+" edit global improvement / tool sharpening list
+map <Leader>i :tabe ~/tool_sharpening.md<CR>
+
+" Execute Dispatch for current file
+map <Leader>d :w<CR>:Dispatch<CR>
 
 " Execute RSpec for current file
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -98,12 +105,10 @@ map <Leader>si :RSintegrationtest
 
 " if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>a: :Tabularize /:\zs/l1<CR>
   vmap <Leader>a{ :Tabularize /{<CR>
-  nmap <Leader>a{ :Tabularize /{<CR>
   nmap <Leader>a> :Tabularize /=><CR>
+  nmap <Leader>a, :Tabularize /,\zs/l1<CR>
 " endif
 " }}}
 " Custom Key Mappings {{{
@@ -112,6 +117,9 @@ nnoremap <C-W>e :tabe<cr>
 
 map <F10> :NERDTreeFind<CR>
 map  <F9> :NERDTreeFind<CR>
+
+" Avoid using escape key
+imap jj <Esc>
 
 " Duplicated selected text using v_D
 vmap D y'>p
@@ -187,6 +195,9 @@ augroup configgroup
 
   " Use Ruby syntax on Capistrano files
   autocmd BufRead,BufNewFile *.cap setfiletype ruby
+
+  " Make ?s part of words
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
 augroup END
 " }}}
