@@ -16,6 +16,7 @@ endif
 " }}}
 " Misc {{{
 set backspace=indent,eol,start
+set noesckeys                 " Get rid of the delay when hitting esc!
 " }}}
 " Digraphs {{{
 digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'
@@ -42,6 +43,7 @@ set listchars=tab:»\ ,trail:·  " display tabs as » and trailing spaces as ·
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set ttyfast
+set shortmess=atI             " Don’t show the intro message when starting Vim
 set scrolloff=7               " keep cursor line from the bottom of the window
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
@@ -65,11 +67,17 @@ set foldnestmax=10      " 10 nested fold max
 nnoremap <leader>b :NERDTreeFind<CR>
 
 " edit vimrc and load vimrc bindings
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " edit global todo list
-map <Leader>n :vsp ~/todo.md<CR>
+map <Leader>n :tabe ~/todo.md<CR>
+
+" edit global improvement / tool sharpening list
+map <Leader>i :tabe ~/tool_sharpening.md<CR>
+
+" Execute Dispatch for current file
+map <Leader>d :w<CR>:Dispatch<CR>
 
 " Execute RSpec for current file
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -97,12 +105,10 @@ map <Leader>si :RSintegrationtest
 
 " if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>a: :Tabularize /:\zs/l1<CR>
   vmap <Leader>a{ :Tabularize /{<CR>
-  nmap <Leader>a{ :Tabularize /{<CR>
   nmap <Leader>a> :Tabularize /=><CR>
+  nmap <Leader>a, :Tabularize /,\zs/l1<CR>
 " endif
 " }}}
 " Custom Key Mappings {{{
@@ -111,6 +117,9 @@ nnoremap <C-W>e :tabe<cr>
 
 map <F10> :NERDTreeFind<CR>
 map  <F9> :NERDTreeFind<CR>
+
+" Avoid using escape key
+imap jj <Esc>
 
 " Duplicated selected text using v_D
 vmap D y'>p
@@ -130,12 +139,34 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 " }}}
+" NERD Tree {{{
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" }}}
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
+"mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+""automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0
+"show the error list automatically
+let g:syntastic_auto_loc_list=1
+"don't care about warnings
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 " }}}
 " Ctrl-P {{{
 let g:ctrlp_max_height = 20            " provide more space to display results
-set wildignore+=tmp/**,*.scssc,*.sassc " ignore tmp files and Sass caches
+set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
+
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command =
+    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " }}}
 " Dragvisuals {{{
 vmap  <expr>  <LEFT>   DVB_Drag('left')
@@ -164,6 +195,9 @@ augroup configgroup
 
   " Use Ruby syntax on Capistrano files
   autocmd BufRead,BufNewFile *.cap setfiletype ruby
+
+  " Make ?s part of words
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
 augroup END
 " }}}

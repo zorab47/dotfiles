@@ -10,6 +10,12 @@ export EDITOR=vim
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
 # SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 # --------- ------- ---- -------  ----------- ---------- ----------- -----------
 # base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
@@ -68,9 +74,13 @@ if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
+# Add project's bin/ to PATH after rbenv init.
+export PATH=".git/safe/../../bin:${PATH}"
+
+
 # Setup autojump, a faster way to navigate directories.
 if command -v autojump >/dev/null 2>&1; then
   source /usr/share/autojump/autojump.bash
 fi
 
-# vim: syntax=sh
+# vim: ft=sh
