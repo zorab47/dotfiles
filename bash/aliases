@@ -4,20 +4,22 @@ OS=`echo $OSTYPE | sed "s/[^a-zA-Z-]//g"`
 
 # some more ls aliases
 alias ll='ls -l'
-alias l='ls -CF'
+alias l='ls -lF'
 
 # cd
 alias ..='cd ..'
 
 alias screen='screen -T $TERM'
 
-alias e='vim'
-alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'
+alias e="$EDITOR"
+alias v="$VISUAL"
 
 alias less="less -FrX"
-alias hi="history | tail -25"
+alias hi="history | tail -35"
+alias tlf="tail -f"
 
-alias brt="bundle exec rake test"
+# Bundler
+alias b="bundle"
 
 # foreman
 alias fr='foreman run'
@@ -30,37 +32,18 @@ alias gdh='git diff HEAD'
 alias gl='git pull'
 alias gp='git push'
 alias gpp='git pull; git push'
-alias gs='git status'
-alias gst='git status'
 alias gap='git add --patch'
 alias gadd='git add'
 alias gg='git grep'
 
 # rails
 alias tlog='tail -f log/development.log'
-alias rst='touch tmp/restart.txt'
-
-# rails testing
-alias rt='rake --trace'
-alias rtf='rake test:functionals --trace'
-alias rti='rake test:integration --trace'
-alias rtl='rake test:lib --trace'
-alias rtu='rake test:units --trace'
-
-alias rrcov='rake coverage:all:test'
-alias rrrcovall='rake test:coverage:all:test'
 
 # rails migration
 alias rdm='rake db:migrate db:test:prepare'
 alias rdr='rake db:rollback'
-alias migrate_all='rake db:migrate; rake db:test:prepare'
-alias rdmt='bake RAILS_ENV=test db:drop db:create db:schema:load'
-
-# watchr
-alias rw='bundle exec rake watchr'
-
-alias rroutes='rake routes'
-alias mroutes='rroutes | vim'
+alias migrte='rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare'
+alias m="migrate"
 
 # capistrano
 alias csd='cap staging deploy'
@@ -77,15 +60,11 @@ function g {
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
-    if which dircolors &> /dev/null; then
-      eval "`dircolors -b`"
-    fi
-
-    if [[ $OS == "darwin" ]]; then
-      alias ls='ls -Gh'
-    else
-      alias ls='ls --color=auto -hB'
-    fi
+  if [[ $OS == "darwin" ]]; then
+    alias ls='ls -Gh'
+  else
+    alias ls='ls --color=auto -hB'
+  fi
 fi
 
 # vim: syntax=sh

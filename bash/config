@@ -2,8 +2,10 @@ umask 022
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoreboth
+export HISTSIZE=10000
 
-# set default editor to vim
+# set vim as the visual editor
+export VISUAL=vim
 export EDITOR=vim
 
 # check the window size after each command and, if necessary,
@@ -58,13 +60,16 @@ xterm*|rxvt*)
     ;;
 esac
 
-dircolors=$HOME/.dircolors-$(tput colors)
 
-if command -v dircolors >/dev/null 2>&1; then
-  if [[ -f $dircolors ]]; then
-      eval $(dircolors -b $dircolors)
-  else
-      eval $(dircolors)
+if [[ $TERM ]]; then
+  dircolors=$HOME/.dircolors-$(tput colors)
+
+  if command -v dircolors >/dev/null 2>&1; then
+    if [[ -f $dircolors ]]; then
+        eval $(dircolors -b $dircolors)
+    else
+        eval $(dircolors)
+    fi
   fi
 fi
 
