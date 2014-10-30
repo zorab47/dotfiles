@@ -2,18 +2,36 @@
   name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
   email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [alias]
-  st = status
-  c = commit
-  co = checkout
-  br = branch
-  d = diff
+	st = status -s
+	s = status -s
+	c = commit -v
+	co = checkout
+	br = branch -v
+	b = branch -v
+	d = diff
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	rc = rebase --continue
+	rs = rebase --skip
+	rn = rebase next
+
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*\\|next\\|master' | xargs -n 1 git branch -d"
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
 [color]
   status = true
   diff = auto
   ui = true
 [diff]
   renamelimit = 0
+	renames = copies
+[help]
+	autocorrect = 1
 [core]
   excludesfile = <%= ENV['HOME'] %>/.gitignore
 [init]
   templatedir = ~/.git_template
+[push]
+  default = simple
