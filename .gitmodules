@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-mkdir"]
 	path = vim/bundle/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir.git
+[submodule "vim/bundle/vim-renumber"]
+	path = vim/bundle/vim-renumber
+	url = https://github.com/vim-scripts/renumber.vim.git
