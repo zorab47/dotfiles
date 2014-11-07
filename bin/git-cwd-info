@@ -8,10 +8,17 @@
 # Rewritten as shell script simply for speed
 
 GIT_REPO_PATH=`git rev-parse --git-dir 2>/dev/null`
+max_branch_length=30
 
 if [[ $GIT_REPO_PATH != '' && $GIT_REPO_PATH != '~' && $GIT_REPO_PATH != "$HOME/.git" ]]; then
 
   GIT_BRANCH=`git symbolic-ref -q HEAD | sed 's/refs\/heads\///'`
+  branch_length=${#GIT_BRANCH}
+
+  if [[ "$branch_length" -gt "$max_branch_length" ]]; then
+    GIT_BRANCH="`echo $GIT_BRANCH | head -c $max_branch_length`…"
+  fi
+
   GIT_COMMIT_ID=`git rev-parse --short HEAD 2>/dev/null`
 
   GIT_MODE_COLOR="\x01[38;05;124m\x02"
@@ -27,8 +34,8 @@ if [[ $GIT_REPO_PATH != '' && $GIT_REPO_PATH != '~' && $GIT_REPO_PATH != "$HOME/
 
   GIT_DIRTY=""
   if [[ "$GIT_REPO_PATH" != '.' && `git ls-files -m` != "" ]]; then
-    GIT_DIRTY=" \x01[38;05;136m\x02✗\x01[0m\x02"
+    GIT_DIRTY="\x01[33m\x02*\x01[0m\x02"
   fi
 
-  echo -e " \x01[38;05;240m\x02$GIT_BRANCH \x01[37m\x02$GIT_COMMIT_ID\x01[38;05;254m\x02$GIT_MODE$GIT_DIRTY "
+  echo -e " \x01[38;5;19m\x02$GIT_BRANCH$GIT_DIRTY\x01[31m\x02$GIT_MODE "
 fi
