@@ -97,3 +97,9 @@
 [submodule "vim/bundle/vim-renumber"]
 	path = vim/bundle/vim-renumber
 	url = https://github.com/vim-scripts/renumber.vim.git
+[submodule "vim/bundle/base16-vim"]
+	path = vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "vim/bundle/tmux"]
+	path = vim/bundle/tmux
+	url = https://github.com/zaiste/tmux.vim.git
