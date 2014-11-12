@@ -103,3 +103,6 @@
 [submodule "vim/bundle/tmux"]
 	path = vim/bundle/tmux
 	url = https://github.com/zaiste/tmux.vim.git
+[submodule "bash/base16-shell"]
+	path = bash/base16-shell
+	url = https://github.com/chriskempson/base16-shell.git
