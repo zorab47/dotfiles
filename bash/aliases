@@ -18,8 +18,12 @@ alias less="less -FrX"
 alias hi="history | tail -35"
 alias tlf="tail -f"
 
+alias light="$HOME/.bash/base16-shell/base16-solarized.light.sh"
+alias dark="$HOME/.bash/base16-shell/base16-solarized.dark.sh"
+
 # Bundler
 alias b="bundle"
+alias be="bundle exec"
 
 # foreman
 alias fr='foreman run'
@@ -29,7 +33,7 @@ alias gcv='git commit -v'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD'
-alias gl='git pull'
+alias gl='git pull --ff-only'
 alias gp='git push'
 alias gpp='git pull; git push'
 alias gap='git add --patch'

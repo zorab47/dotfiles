@@ -8,6 +8,9 @@ export HISTSIZE=10000
 export VISUAL=vim
 export EDITOR=vim
 
+# set pager display ANSI colors
+export PAGER="less -R"
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -49,7 +52,7 @@ cygwin|xterm-color)
     PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     ;;
 xterm-256color*|screen-256color*)
-    PS1='\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]$(~/.bin/git-cwd-info)\[\e[0m\]\n\[\e[35m\]$\[\e[0m\] '
+    PS1='\[\e[34m\]\w\[\e[0m\]$(~/.bin/git-cwd-info)\[\e[0m\]\n\[\e[35m\]$\[\e[0m\] '
     ;;
 *)
     PS1='\u@\h:\w\$ '
@@ -67,8 +70,9 @@ xterm*|rxvt*)
 esac
 
 
-if [[ $TERM ]]; then
+if [ -n "$TERM" ]; then
   dircolors=$HOME/.dircolors-$(tput colors)
+  dircolors=$HOME/.dircolors.ansi-universal
 
   if command -v dircolors >/dev/null 2>&1; then
     if [[ -f $dircolors ]]; then
