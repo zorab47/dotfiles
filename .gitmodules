@@ -109,3 +109,6 @@
 [submodule "vim/bundle/investigate.vim"]
 	path = vim/bundle/investigate.vim
 	url = https://github.com/Keithbsmiley/investigate.vim.git
+[submodule "vim/bundle/ag.vim"]
+	path = vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim
