@@ -42,9 +42,26 @@ shopt -s cdspell
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.bash/base16-shell/base16-solarized.dark.sh"
-if [ -n "$BASE16_SHELL" ]; then
-  source $BASE16_SHELL
+
+if shopt -q login_shell; then
+  if [ -n "$BASE16_SHELL" ]; then
+    source $BASE16_SHELL
+  fi
+
+  if [ -n "$TERM" ]; then
+    dircolors=$HOME/.dircolors-$(tput colors)
+    dircolors=$HOME/.dircolors.ansi-universal
+
+    if command -v dircolors >/dev/null 2>&1; then
+      if [[ -f $dircolors ]]; then
+        eval $(dircolors -b $dircolors)
+      else
+        eval $(dircolors)
+      fi
+    fi
+  fi
 fi
+
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -68,20 +85,6 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
-
-if [ -n "$TERM" ]; then
-  dircolors=$HOME/.dircolors-$(tput colors)
-  dircolors=$HOME/.dircolors.ansi-universal
-
-  if command -v dircolors >/dev/null 2>&1; then
-    if [[ -f $dircolors ]]; then
-        eval $(dircolors -b $dircolors)
-    else
-        eval $(dircolors)
-    fi
-  fi
-fi
 
 MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
