@@ -24,7 +24,6 @@ endif
 " }}}
 " Misc {{{
 set backspace=indent,eol,start
-set noesckeys                 " Get rid of the delay when hitting esc!
 " }}}
 " Digraphs {{{
 digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'
