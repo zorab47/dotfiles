@@ -37,5 +37,5 @@ if [[ $GIT_REPO_PATH != '' && $GIT_REPO_PATH != '~' && $GIT_REPO_PATH != "$HOME/
     GIT_DIRTY="\x01[33m\x02*\x01[0m\x02"
   fi
 
-  echo -e " \x01[38;5;19m\x02$GIT_BRANCH$GIT_DIRTY\x01[31m\x02$GIT_MODE "
+  echo -e " \x01[38;5;8m\x02$GIT_BRANCH$GIT_DIRTY\x01[31m\x02$GIT_MODE "
 fi
