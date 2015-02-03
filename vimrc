@@ -24,6 +24,7 @@ endif
 " }}}
 " Misc {{{
 set backspace=indent,eol,start
+set timeoutlen=500
 " }}}
 " Digraphs {{{
 digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'
@@ -51,12 +52,17 @@ set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set ttyfast
 set shortmess=atI             " Don’t show the intro message when starting Vim
-set scrolloff=7               " keep cursor line from the bottom of the window
+set cmdheight=2               " more room to display messages
+set scrolloff=10              " keep cursor line from the bottom of the window
+set sidescrolloff=15          " keep cursor line from the bottom of the window
+set sidescroll=1              " keep cursor line from the bottom of the window
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
 set laststatus=2              " Always show status line of last window
 " set noshowmode                " Don't show the default line, intead use Airline
 filetype plugin indent on     " load filetype-specific indent and plugin files
+
+set mouse=a                   " enable mouse
 
 if exists('+colorcolumn')
   set colorcolumn=81
@@ -168,7 +174,7 @@ set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command =
-    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$" --ignore "tmp/cache"'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
