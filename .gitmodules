@@ -112,3 +112,12 @@
 [submodule "vim/bundle/ag.vim"]
 	path = vim/bundle/ag.vim
 	url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/vim-ruby-refactoring"]
+	path = vim/bundle/vim-ruby-refactoring
+	url = https://github.com/ecomba/vim-ruby-refactoring.git
+[submodule "vim/bundle/vim-tbone"]
+	path = vim/bundle/vim-tbone
+	url = https://github.com/tpope/vim-tbone.git
+[submodule "vim/bundle/vim-diff-enhanced"]
+	path = vim/bundle/vim-diff-enhanced
+	url = git@github.com:chrisbra/vim-diff-enhanced.git
