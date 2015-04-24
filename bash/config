@@ -42,7 +42,6 @@ shopt -s cdspell
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.bash/base16-shell/base16-solarized.dark.sh"
-
 if shopt -q login_shell; then
   if [ -n "$BASE16_SHELL" ]; then
     source $BASE16_SHELL
@@ -61,7 +60,6 @@ if shopt -q login_shell; then
     fi
   fi
 fi
-
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
