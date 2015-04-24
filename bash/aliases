@@ -16,7 +16,7 @@ alias v="$VISUAL"
 
 alias less="less -FrX"
 alias hi="history | tail -35"
-alias tlf="tail -f"
+alias tlf="less +F"
 
 alias light="$HOME/.bash/base16-shell/base16-solarized.light.sh"
 alias dark="$HOME/.bash/base16-shell/base16-solarized.dark.sh"

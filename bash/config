@@ -2,7 +2,7 @@ umask 022
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoreboth
-export HISTSIZE=10000
+export HISTSIZE=50000
 
 # set vim as the visual editor
 export VISUAL=vim
