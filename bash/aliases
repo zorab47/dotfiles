@@ -16,10 +16,10 @@ alias v="$VISUAL"
 
 alias less="less -FrX"
 alias hi="history | tail -35"
-alias tlf="less +F"
 
 alias light="$HOME/.bash/base16-shell/base16-solarized.light.sh"
 alias dark="$HOME/.bash/base16-shell/base16-solarized.dark.sh"
+alias base16="$BASE16_SHELL"
 
 # Bundler
 alias b="bundle"
@@ -48,17 +48,33 @@ alias rdm='rake db:migrate db:test:prepare'
 alias rdr='rake db:rollback'
 alias migrte='rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare'
 alias m="migrate"
+alias rdbp="rake db:test:prepare"
+
+# rake
+alias r="rake"
 
 # capistrano
 alias csd='cap staging deploy'
 
 alias open='xdg-open'
 
+# ThingM Blink
+alias bl="blink1-tool --random=3 -t 300 -q; blink1-tool --off -q"
+alias blink=blink1-tool
+
 function g {
   if [[ $# > 0 ]]; then
     git $@
   else
     git status -s
+  fi
+}
+
+function tlf {
+  if [[ $# == 0 && -f log/development.log ]]; then
+    less +F log/development.log
+  else
+    less $@
   fi
 }
 

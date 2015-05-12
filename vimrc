@@ -139,7 +139,7 @@ nnoremap <silent> <Leader>cn :let @* = expand("%:t")<CR>
 " map <Leader>sf :RSfunctionaltest
 " map <Leader>si :RSintegrationtest
 
-map <Leader>sc :RVschema<CR>
+map <Leader>sc :RVschema<space>
 map <Leader>ag :tabe<CR>:Ag<space>
 
 " if exists(":Tabularize")
