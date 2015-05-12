@@ -121,3 +121,9 @@
 [submodule "vim/bundle/vim-diff-enhanced"]
 	path = vim/bundle/vim-diff-enhanced
 	url = git@github.com:chrisbra/vim-diff-enhanced.git
+[submodule "vim/bundle/noctu"]
+	path = vim/bundle/noctu
+	url = git://github.com/noahfrederick/vim-noctu.git
+[submodule "vim/bundle/vim-hemisu"]
+	path = vim/bundle/vim-hemisu
+	url = https://github.com/noahfrederick/vim-hemisu.git
