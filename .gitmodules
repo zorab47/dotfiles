@@ -187,6 +187,6 @@
 	url = https://github.com/NLKNguyen/papercolor-theme.git
   ignore = untracked
 [submodule "vim/bundle/vim-tmux-navigator"]
-	path = vim/bundle/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
+  path = vim/bundle/vim-tmux-navigator
+  url = https://github.com/christoomey/vim-tmux-navigator
   ignore = untracked
