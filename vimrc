@@ -268,10 +268,15 @@ augroup vimrc
 
   autocmd Filetype coffee map <buffer> <Leader>t :!teaspoon<CR>
   autocmd Filetype php    map <buffer> <Leader>t :!phpunit --colors %<CR>
-  " autocmd Filetype mkd set foldlevel=2
   autocmd Filetype qf     setlocal nolist wrap
 augroup END
 
+" }}}
+" Titlecase {{{
+  let g:titlecase_map_keys = 0
+  nmap <leader>gt <Plug>Titlecase
+  vmap <leader>gt <Plug>Titlecase
+  nmap <leader>gT <Plug>TitlecaseLine
 " }}}
 
 " Backups {{{
