@@ -106,4 +106,20 @@ if [ "$TERM" != "dumb" ]; then
   fi
 fi
 
+# IPython Notebook alias w/pylab support
+alias ipynb='ipython notebook --pylab inline'
+
+# Random Password Function
+randpw(){ date +%s | shasum | base64 | head -c 32 ; echo; }
+
+# Pushover push function (for notification when running long jobs
+function push {
+  : ${TITLE:="$2"}
+  : ${TITLE:="$OSTYPE-$USER"}
+  curl -s -F "token=$PUSHER_TERMINAl_TOKEN" \
+  -F "user=$PUSHER_USER_KEY" \
+  -F "title=$TITLE" \
+  -F "message=$1" https://api.pushover.net/1/messages.json
+}
+
 # vim: syntax=sh
