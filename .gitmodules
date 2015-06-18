@@ -139,3 +139,6 @@
 [submodule "vim/bundle/papercolor"]
 	path = vim/bundle/papercolor
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "vim/bundle/vim-tmux-navigator"]
+	path = vim/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
