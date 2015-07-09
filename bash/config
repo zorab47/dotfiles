@@ -84,7 +84,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
+export MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
 if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init -)"

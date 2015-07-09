@@ -72,9 +72,9 @@ function g {
 
 function tlf {
   if [[ $# == 0 && -f log/development.log ]]; then
-    less +F log/development.log
+    less -FRSX +F log/development.log
   else
-    less $@
+    less -FRSX +F $@
   fi
 }
 
