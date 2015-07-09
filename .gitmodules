@@ -190,3 +190,6 @@
   path = vim/bundle/vim-tmux-navigator
   url = https://github.com/christoomey/vim-tmux-navigator
   ignore = untracked
+[submodule "vim/bundle/vim-flagship"]
+	path = vim/bundle/vim-flagship
+	url = https://github.com/tpope/vim-flagship.git
