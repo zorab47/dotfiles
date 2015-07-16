@@ -144,21 +144,25 @@ map <Leader>ag :tabe<CR>:Ag<space>
 
 " if exists(":Tabularize")
 " mnemonic: (a)lign
-"
-" tabularize "=", but not "<=" or "==".
+
+  " Ruby
+  " tabularize "=", but not "<=" or "==".
   nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
   vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
 
-  nmap <Leader>a: :Tabularize /:\zs/l1<CR>
-  vmap <Leader>a: :Tabularize /:\zs/l1<CR>
-  nmap <Leader>a{ :Tabularize /{<CR>
-  vmap <Leader>a{ :Tabularize /{<CR>
+  nmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
+  vmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
+  nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
+  vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
   nmap <Leader>a> :Tabularize /=><CR>
   vmap <Leader>a> :Tabularize /=><CR>
   nmap <Leader>a, :Tabularize /,\zs/l1<CR>
   vmap <Leader>a, :Tabularize /,\zs/l1<CR>
+
+  " R script
   nmap <Leader>a< :Tabularize /<-<CR>
   vmap <Leader>a< :Tabularize /<-<CR>
+
 " endif
 " }}}
 " Abbreviations {{{
