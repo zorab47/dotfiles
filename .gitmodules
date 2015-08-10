@@ -193,3 +193,8 @@
 [submodule "vim/bundle/vim-flagship"]
 	path = vim/bundle/vim-flagship
 	url = https://github.com/tpope/vim-flagship.git
+	ignore = untracked
+[submodule "vim/bundle/conoline.vim"]
+	path = vim/bundle/conoline.vim
+	url = https://github.com/miyakogi/conoline.vim.git
+	ignore = untracked
