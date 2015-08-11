@@ -15,7 +15,7 @@ if &t_Co < 256
 else
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace
-  colorscheme base16-solarized
+  colorscheme base16-eighties
 
   if &term =~ 'screen-256color' && exists('$TMUX')
     " disable Background Color Erase (BCE) so that color schemes
