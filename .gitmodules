@@ -198,3 +198,9 @@
 	path = vim/bundle/conoline.vim
 	url = https://github.com/miyakogi/conoline.vim.git
 	ignore = untracked
+[submodule "vim/bundle/crunch.vim"]
+	path = vim/bundle/crunch.vim
+	url = https://github.com/arecarn/crunch.vim.git
+[submodule "vim/bundle/selection.vim"]
+	path = vim/bundle/selection.vim
+	url = https://github.com/arecarn/selection.vim.git

@@ -1,0 +1,6 @@
+*.git
+*.hg
+*.svn
+tmp
+tmp/cache
+vim/bundle/

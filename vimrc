@@ -239,8 +239,7 @@ set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command =
-    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$" --ignore "tmp/cache"'
+  let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --nocolor --hidden'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
