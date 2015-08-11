@@ -1,0 +1,15 @@
+#!/usr/bin/awk -f
+
+/MemTotal/     { total     = $2 }
+/MemAvailable/ { available = $2 }
+
+BEGIN {
+  printf "%8s %8s %8s\n", "Total", "Free%", "Avail%"
+}
+
+END {
+  free = total - available
+  total_in_gb = total / 1024 / 1024
+
+  printf "%7.1fG %8.0f %8.0f\n", total_in_gb, available / total * 100, free / total * 100
+}

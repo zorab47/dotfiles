@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+mem=(`awk -f ~/.bin/mem-usage /proc/meminfo | tail -1`)
+total=${mem[0]}
+free=${mem[1]}
+usage=${mem[2]}
+
+if [ $usage -gt 84 ]; then
+  attrs="fg=red,reverse"
+elif [ $usage -gt 69 ]; then
+  attrs="fg=yellow"
+else
+  attrs="fg=green"
+fi
+
+echo "#[$attrs]Mem $usage% of $total#[fg=default,noreverse]"
