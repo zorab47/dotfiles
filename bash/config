@@ -9,7 +9,7 @@ export VISUAL=vim
 export EDITOR=vim
 
 # set pager display ANSI colors
-export PAGER="less -R"
+export PAGER="less -FRSX"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
