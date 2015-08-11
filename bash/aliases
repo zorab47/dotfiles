@@ -78,6 +78,25 @@ function tlf {
   fi
 }
 
+function browse {
+  if [[ $# > 0 ]]; then
+    xdg-open $@ > /dev/null 2>&1 &
+  else
+
+    if [[ -f .env ]]; then
+      port=`grep PORT .env | cut --delimiter== --fields=2`
+
+      if [[ $port == "" ]]; then
+        port=3000
+      fi
+    fi
+
+    echo "Opening \"http://localhost:$port\" in your browser…"
+
+    xdg-open "http://localhost:$port" > /dev/null 2>&1 &
+  fi
+}
+
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
   if [[ $OS == "darwin" ]]; then
