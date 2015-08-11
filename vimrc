@@ -141,7 +141,8 @@ nnoremap <silent> <Leader>cn :let @* = expand("%:t")<CR>
 
 map <Leader>sc :RVschema<space>
 map <Leader>ag :tabe<CR>:Ag<space>
-
+" }}}
+" Tabularize {{{
 " if exists(":Tabularize")
 " mnemonic: (a)lign
 
@@ -159,9 +160,17 @@ map <Leader>ag :tabe<CR>:Ag<space>
   nmap <Leader>a, :Tabularize /,\zs/l1<CR>
   vmap <Leader>a, :Tabularize /,\zs/l1<CR>
 
+  " hash keys (a)lign (k)eys
+  nmap <Leader>ak :Tabularize /\w\+:<CR>
+  vmap <Leader>ak :Tabularize /\w\+:<CR>
+
   " R script
   nmap <Leader>a< :Tabularize /<-<CR>
   vmap <Leader>a< :Tabularize /<-<CR>
+
+  " GAMS align on periods
+  nmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
+  vmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
 
 " endif
 " }}}
