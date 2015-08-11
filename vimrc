@@ -113,6 +113,8 @@ map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
 " Yank to system clipboard
 map <Leader>y "+y
 
+nnoremap <leader>fw :FixLastSpellingError<CR>
+
 " TODO
 " copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
 " this is helpful to paste someone the path you're looking at
