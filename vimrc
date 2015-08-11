@@ -290,6 +290,11 @@ augroup END
   nmap <leader>gT <Plug>TitlecaseLine
 " }}}
 
+" Conoline {{{
+let g:conoline_use_colorscheme_default_normal=1
+let g:conoline_use_colorscheme_default_insert=1
+" }}}
+
 " Backups {{{
 set nobackup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
