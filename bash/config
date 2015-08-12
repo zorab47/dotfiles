@@ -41,7 +41,7 @@ shopt -s cdspell
 # green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 # Base16 Shell
-BASE16_SHELL="/home/charles/.bash/base16-shell/base16-eighties.dark.sh"
+BASE16_SHELL="$HOME/.bash/base16-shell/base16-eighties.dark.sh"
 
 if [ -n "$BASE16_SHELL" ]; then
   source $BASE16_SHELL
