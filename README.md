@@ -5,8 +5,7 @@ Configuration of my system the way I like it.
 ## Installation
 
 1. git clone git://github.com/zorab47/dotfiles ~/.dotfiles
-2. cd ~/.dotfiles     ; rake install
-3. cd ~/.dotfiles/vim ; git module update --init
+2. cd ~/.dotfiles ; rake install
 
 ## External Apps
 
@@ -20,6 +19,11 @@ Optional applications which enhance bash, vim, etc.
 ```
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
+
+### Fonts
+
+[Inconsolata-g](http://leonardo-m.livejournal.com/77079.html) is my first choice
+in programming fonts.
 
 ### Gems
 
