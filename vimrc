@@ -149,18 +149,20 @@ map <Leader>ag :tabe<CR>:Ag<space>
 " mnemonic: (a)lign
 
   " Ruby
-  " tabularize "=", but not "<=" or "==".
+  " align "=" but not "<=" or "==".
   nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
   vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
 
+  " align ":" but not "::"
   nmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
   vmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
+
   nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
   vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
   nmap <Leader>a> :Tabularize /=><CR>
   vmap <Leader>a> :Tabularize /=><CR>
-  nmap <Leader>a, :Tabularize /,\zs/l1<CR>
-  vmap <Leader>a, :Tabularize /,\zs/l1<CR>
+  nmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
+  vmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
 
   " hash keys (a)lign (k)eys
   nmap <Leader>ak :Tabularize /\w\+:<CR>
