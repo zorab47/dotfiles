@@ -2,9 +2,71 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-let g:pathogen_disabled = ['delimitMate', 'vim-airline', 'vim-dragvisuals'] " disable specific bundles
 set nocompatible
-execute pathogen#infect()
+
+call plug#begin()
+
+" Plug 'Raimondi/delimitMate'
+" Plug 'atweiden/vim-dragvisuals'
+Plug 'Keithbsmiley/investigate.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'airblade/vim-gitgutter'
+Plug 'arecarn/crunch.vim'
+Plug 'arecarn/selection.vim'
+Plug 'bling/vim-airline'
+Plug 'bogado/file-line'
+Plug 'chrisbra/vim-diff-enhanced'
+Plug 'chriskempson/base16-shell'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-titlecase'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'drmikehenry/vim-fontsize'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'gabebw/vim-spec-runner'
+Plug 'garbas/vim-snipmate'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/goyo.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'miyakogi/conoline.vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'noahfrederick/vim-hemisu'
+Plug 'noahfrederick/vim-noctu'
+Plug 'pangloss/vim-javascript'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'plasticboy/vim-markdown'
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'thomwiggers/vim-colors-solarized'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-flagship'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/renumber.vim'
+Plug 'zaiste/tmux.vim'
+Plug 'zorab47/vim-gams'
+
+call plug#end()
+
 " }}}
 " Colors {{{
 syntax enable
