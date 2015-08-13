@@ -206,40 +206,6 @@ nnoremap <silent> <Leader>cn :let @* = expand("%:t")<CR>
 map <Leader>sc :RVschema<space>
 map <Leader>ag :tabe<CR>:Ag<space>
 " }}}
-" Tabularize {{{
-" if exists(":Tabularize")
-" mnemonic: (a)lign
-
-  " Ruby
-  " align "=" but not "<=" or "==".
-  nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
-  vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
-
-  " align ":" but not "::"
-  nmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
-  vmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
-
-  nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
-  vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
-  nmap <Leader>a> :Tabularize /=><CR>
-  vmap <Leader>a> :Tabularize /=><CR>
-  nmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
-  vmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
-
-  " hash keys (a)lign (k)eys
-  nmap <Leader>ak :Tabularize /\w\+:<CR>
-  vmap <Leader>ak :Tabularize /\w\+:<CR>
-
-  " R script
-  nmap <Leader>a< :Tabularize /<-<CR>
-  vmap <Leader>a< :Tabularize /<-<CR>
-
-  " GAMS align on periods
-  nmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
-  vmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
-
-" endif
-" }}}
 " Abbreviations {{{
 ab zaa ActiveAdmin
 
@@ -278,6 +244,44 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 " }}}
+
+" Plugin Configs
+" --------------
+
+" Tabularize {{{
+" if exists(":Tabularize")
+" mnemonic: (a)lign
+
+  " Ruby
+  " align "=" but not "<=" or "==".
+  nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
+  vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
+
+  " align ":" but not "::"
+  nmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
+  vmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
+
+  nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
+  vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
+  nmap <Leader>a> :Tabularize /=><CR>
+  vmap <Leader>a> :Tabularize /=><CR>
+  nmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
+  vmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
+
+  " hash keys (a)lign (k)eys
+  nmap <Leader>ak :Tabularize /\w\+:<CR>
+  vmap <Leader>ak :Tabularize /\w\+:<CR>
+
+  " R script
+  nmap <Leader>a< :Tabularize /<-<CR>
+  vmap <Leader>a< :Tabularize /<-<CR>
+
+  " GAMS align on periods
+  nmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
+  vmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
+
+" endif
+" }}}
 " NERD Tree {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -296,7 +300,6 @@ let g:syntastic_check_on_wq = 0
 
 " let g:syntastic_ruby_checkers = ['rubylint', 'mri']
 " }}}
-
 " Ctrl-P {{{
 let g:ctrlp_max_height = 20            " provide more space to display results
 set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
