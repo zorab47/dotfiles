@@ -314,8 +314,20 @@ endif
 
 " }}}
 " Airline {{{
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" Use unicode character separators instead of patched fonts for portability
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+
 " }}}
 " Invetigate.vim {{{
 let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
@@ -366,7 +378,6 @@ augroup END
   vmap <leader>gt <Plug>Titlecase
   nmap <leader>gT <Plug>TitlecaseLine
 " }}}
-
 " Conoline {{{
 let g:conoline_use_colorscheme_default_normal=1
 let g:conoline_use_colorscheme_default_insert=1
