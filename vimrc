@@ -254,9 +254,9 @@ vnoremap <F1> <ESC>
 " mnemonic: (a)lign
 
   " Ruby
-  " align "=" but not "<=" or "==".
-  nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
-  vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
+  " align "=" but not "<=", "==", or "=>".
+  nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)[=>]\@!/<CR>
+  vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)[=>]\@!/<CR>
 
   " align ":" but not "::"
   nmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
