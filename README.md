@@ -20,10 +20,23 @@ Optional applications which enhance bash, vim, etc.
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
 
+### Development Tools
+
+- [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md)
+- [shellcheck](https://github.com/koalaman/shellcheck)
+
+```
+sudo apt-get install shellcheck git-extras
+```
+
 ### Fonts
 
 [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html) is my first choice
 in programming fonts.
+
+```
+fc-cache -fv  # update font caches
+```
 
 ### Gems
 
