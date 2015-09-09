@@ -44,7 +44,7 @@ shopt -s cdspell
 BASE16_SHELL="$HOME/.bash/base16-shell/base16-eighties.dark.sh"
 
 if [ -n "$BASE16_SHELL" ]; then
-  source $BASE16_SHELL
+  source "$BASE16_SHELL"
 fi
 
 if [ -n "$TERM" ]; then
@@ -53,9 +53,9 @@ if [ -n "$TERM" ]; then
 
   if command -v dircolors >/dev/null 2>&1; then
     if [[ -f $dircolors ]]; then
-      eval $(dircolors -b $dircolors)
+      eval "$(dircolors -b $dircolors)"
     else
-      eval $(dircolors)
+      eval "$(dircolors)"
     fi
   fi
 fi

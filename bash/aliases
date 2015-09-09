@@ -1,6 +1,6 @@
 
 # Remove non-alpha characters: darwin10.0 -> darwin
-OS=`echo $OSTYPE | sed "s/[^a-zA-Z-]//g"`
+OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
 
 # some more ls aliases
 alias ll='ls -l'
@@ -11,15 +11,15 @@ alias ..='cd ..'
 
 alias screen='screen -T $TERM'
 
-alias e="$EDITOR"
-alias v="$VISUAL"
+alias e="\$EDITOR"
+alias v="\$VISUAL"
 
 alias less="less -FrX"
 alias hi="history | tail -35"
 
-alias light="$HOME/.bash/base16-shell/base16-solarized.light.sh"
-alias dark="$HOME/.bash/base16-shell/base16-solarized.dark.sh"
-alias base16="$BASE16_SHELL"
+alias light="\$HOME/.bash/base16-shell/base16-solarized.light.sh"
+alias dark="\$HOME/.bash/base16-shell/base16-solarized.dark.sh"
+alias base16="\$BASE16_SHELL"
 
 # Bundler
 alias b="bundle"
@@ -63,8 +63,8 @@ alias bl="blink1-tool --random=3 -t 300 -q; blink1-tool --off -q"
 alias blink=blink1-tool
 
 function g {
-  if [[ $# > 0 ]]; then
-    git $@
+  if [[ $# -gt 0 ]]; then
+    git "$@"
   else
     git status -s
   fi
@@ -74,17 +74,17 @@ function tlf {
   if [[ $# == 0 && -f log/development.log ]]; then
     less -FRSX +F log/development.log
   else
-    less -FRSX +F $@
+    less -FRSX +F "$@"
   fi
 }
 
 function browse {
-  if [[ $# > 0 ]]; then
-    xdg-open $@ > /dev/null 2>&1 &
+  if [[ $# -gt 0 ]]; then
+    xdg-open "$@" > /dev/null 2>&1 &
   else
 
     if [[ -f .env ]]; then
-      port=`grep PORT .env | cut --delimiter== --fields=2`
+      port=$(grep PORT .env | cut --delimiter== --fields=2)
 
       if [[ $port == "" ]]; then
         port=3000
@@ -115,7 +115,7 @@ randpw(){ date +%s | shasum | base64 | head -c 32 ; echo; }
 # Pushover push function (for notification when running long jobs
 function push {
   : ${TITLE:="$2"}
-  : ${TITLE:="$USER@`hostname`"}
+  : ${TITLE:="$USER@$(hostname)"}
   curl -s -F "token=$PUSHER_TERMINAL_TOKEN" \
   -F "user=$PUSHER_USER_KEY" \
   -F "title=$TITLE" \
