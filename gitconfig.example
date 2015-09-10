@@ -1,0 +1,62 @@
+[user]
+  name = ${name}
+  email = ${email}
+[alias]
+  st = status -s
+  s = status -s
+  c = commit -v
+  co = checkout
+  br = branch -v
+  b = branch -v
+  d = diff --patience
+  l = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%<(7)%aN%Cgreen%d %Creset%s' --date=short -n 40 --abbrev-commit --graph --use-mailmap
+  rc = rebase --continue
+  rs = rebase --skip
+  rn = rebase next
+  m = merge --ff-only
+
+  # Remove branches that have already been merged with master
+  # a.k.a. ‘delete merged’
+  dm = "!git branch --merged | grep -v '\\*\\|next\\|master' | xargs --no-run-if-empty --max-args=1 git branch --delete"
+  ; up = "!git remote update -p; git merge --ff-only @{u}"
+  loga = log --pretty=format:'%C(yellow)%h %C(red)%ad %C(blue)%<(7)%aN%C(green)%d %Creset%s' --date=short --abbrev-commit --graph
+  lognc = log --pretty=format:'%h %ad %<(7)%aN%d %s' --date=short --abbrev-commit --graph
+
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
+
+  # http://jerodsanto.net/2014/09/git-a-list-of-commits-on-one-branch-but-not-the-other
+  contrast = log --left-right --graph --cherry-pick --oneline
+[color]
+  status = true
+  diff = auto
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+; [color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+;   old = red bold
+;   new = green bold
+[color "status"]
+  added = yellow
+  changed = blue
+  untracked = cyan
+[diff]
+  renamelimit = 0
+  renames = copies
+[help]
+  autocorrect = 1
+[core]
+  excludesfile = ${HOME}/.gitignore
+  pager = less -FRSX
+[init]
+  templatedir = ~/.git_template
+[push]
+  default = simple
+[merge]
+  tool = vimdiff
+[mailmap]
+  file = ${HOME}/.mailmap

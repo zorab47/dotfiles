@@ -1,0 +1,8 @@
+/\.[^\/]\+$
+symlink.exclusions
+Rakefile
+README.md
+LICENSE
+provisions
+bootstrap
+gitconfig.example

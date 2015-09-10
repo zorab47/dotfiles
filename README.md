@@ -4,8 +4,11 @@ Configuration of my system the way I like it.
 
 ## Installation
 
-1. git clone git://github.com/zorab47/dotfiles ~/.dotfiles
-2. cd ~/.dotfiles ; rake install
+```sh
+git clone https://github.com/zorab47/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+./bootstrap
+```
 
 ## External Apps
 
