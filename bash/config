@@ -65,8 +65,8 @@ case "$TERM" in
 cygwin|xterm-color)
     PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     ;;
-xterm-256color*|screen-256color*)
-    PS1='\[\e[34m\]\w\[\e[0m\]$(~/.bin/git-cwd-info)\[\e[0m\]\n\[\e[35m\]$\[\e[0m\] '
+*256color*)
+    PS1='\[\e[38;5;8m\]\h \[\e[34m\]\w\[\e[0m\]$(~/.bin/git-cwd-info)\[\e[0m\]\n\[\e[35m\]$\[\e[0m\] '
     ;;
 *)
     PS1='\u@\h:\w\$ '
