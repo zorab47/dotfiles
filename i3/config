@@ -46,9 +46,9 @@ bindsym $mod+l focus right
 # bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 # move focused window
@@ -127,11 +127,11 @@ mode "resize" {
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+       # Pressing down will grow the window’s height.
+        bindsym  h  resize  shrink  width   10  px  or  10  ppt
+        bindsym  j  resize  grow    height  10  px  or  10  ppt
+        bindsym  k  resize  shrink  height  10  px  or  10  ppt
+        bindsym  l  resize  grow    width   10  px  or  10  ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -142,9 +142,25 @@ mode "resize" {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+set $black    #2d2d2d
+set $red      #f2777a
+set $green    #99cc99
+set $yellow   #ffcc66
+set $blue     #6699cc
+set $magenta  #cc99cc
+set $cyan     #66cccc
+set $white    #d3d0c8
+set $br_black #747369
+set $br_white #f2f0ec
+set $dk_black #393939
+set $color19  #515151
+set $color20  #a09f93
+set $color21  #e8e6df
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -158,6 +174,14 @@ bar {
               # focused_workspace #cb4b16 #cb4b16 #eee8d5
               # active_workspace #cb4b16 #cb4b16 #eee8d5
               # inactive_workspace #b58900 #b58900 #eee8d5
+
+              background $black
+              statusline $red
+
+              #                  border    background text
+              focused_workspace  $blue     $blue      $br_white
+              active_workspace   #cb4b16   #cb4b16    #eee8d5
+              inactive_workspace $dk_black $black     $br_black
         }
 }
 
@@ -167,10 +191,16 @@ bar {
 #client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
 #client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
 
-# class                 border  backgr. text    indicator
-client.focused          #6699cc #6699cc #fdf6e3 #2e9ef4
-client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
-client.unfocused        #333333 #747369 #fdf6e3 #292d2e
+# class                  border    backgr.   text       indicator
+client.focused           $blue     $blue     $br_white  $red
+client.focused_inactive  $white    $white    $black     #484e50
+client.unfocused         $br_black $br_black $br_white  #292d2e
 
-exec --no-startup-id gnome-setting-daemon
+bindsym Mod4+L exec i3lock --dpms --color=747369
+
 exec --no-startup-id nm-applet
+exec --no-startup-id nitrogen --restore
+
+exec --no-startup-id gnome-screensaver
+exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id gnome-keyring-daemon
