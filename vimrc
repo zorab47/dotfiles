@@ -280,6 +280,9 @@ vnoremap <F1> <ESC>
   nmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
   vmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
 
+  call plug#load('tabular')
+  AddTabularPattern! whitespace / \+\zs/l1r0
+
 " endif
 " }}}
 " NERD Tree {{{
