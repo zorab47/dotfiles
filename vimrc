@@ -283,6 +283,9 @@ vnoremap <F1> <ESC>
   call plug#load('tabular')
   AddTabularPattern! whitespace / \+\zs/l1r0
 
+  " Align ruby blocks, but ignore string interpolation
+  AddTabularPattern! ruby_block /[^#]\@<={/
+
 " endif
 " }}}
 " NERD Tree {{{
