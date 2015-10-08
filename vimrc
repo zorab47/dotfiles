@@ -28,6 +28,9 @@ Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ktonga/vim-follow-my-lead'
@@ -269,8 +272,8 @@ vnoremap <F1> <ESC>
   vmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
 
   " hash keys (a)lign (k)eys
-  nmap <Leader>ak :Tabularize /\w\+:<CR>
-  vmap <Leader>ak :Tabularize /\w\+:<CR>
+  nmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
+  vmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
 
   " R script
   nmap <Leader>a< :Tabularize /<-<CR>
@@ -279,6 +282,9 @@ vnoremap <F1> <ESC>
   " GAMS align on periods
   nmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
   vmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
+
+  nmap <Leader>aw :Tabularize whitespace<CR>
+  vmap <Leader>aw :Tabularize whitespace<CR>
 
   call plug#load('tabular')
   AddTabularPattern! whitespace / \+\zs/l1r0
@@ -294,14 +300,22 @@ let NERDTreeDirArrows = 1
 " }}}
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
-"mark syntax errors with :signs
+
+" mark syntax errors with :signs
 let g:syntastic_enable_signs=1
-""automatically jump to the error when saving the file
+
+" automatically jump to the error when saving the file
 let g:syntastic_auto_jump=0
-"show the error list automatically
+
+" show the error list automatically
 let g:syntastic_auto_loc_list=0
-"don't care about warnings
+
+" don't care about warnings
 " let g:syntastic_quiet_messages = {'level': 'warnings'}
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+
 let g:syntastic_check_on_wq = 0
 
 " let g:syntastic_ruby_checkers = ['rubylint', 'mri']
@@ -353,6 +367,9 @@ augroup vimrc
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
 
   autocmd FileType r set commentstring=#\ %s
+
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Use Ruby syntax on Arbre template files
   autocmd BufRead,BufNewFile *.arb setfiletype ruby
