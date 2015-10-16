@@ -10,6 +10,7 @@ Plug 'Keithbsmiley/investigate.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
 Plug 'bling/vim-airline'
@@ -228,6 +229,7 @@ map  <F9> :NERDTreeFind<CR>
 
 " Avoid using escape key
 imap jj <Esc>
+imap jk <Esc>
 
 " Duplicated selected text using v_D
 vmap D y'>p
@@ -366,7 +368,11 @@ augroup vimrc
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
 
+  " Use hash as R comment string
   autocmd FileType r set commentstring=#\ %s
+
+  " Doing entries as markdown
+  autocmd BufRead /tmp/doing* setfiletype markdown
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
@@ -379,10 +385,6 @@ augroup vimrc
 
   " Setup vim-dispatch for RSpec files
   autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = 'rspec %'
-
-  " Setup vim-dispatch for Cucumber features
-  autocmd FileType cucumber let g:dispatch = 'bundle exec cucumber %'
-  autocmd FileType cucumber map <buffer> <Leader>t :Dispatch<CR>
 
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
