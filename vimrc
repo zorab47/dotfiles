@@ -68,7 +68,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
-Plug 'vim-scripts/sql.vim--Stinson'
+Plug 'shmup/vim-sql-syntax'
 
 call plug#end()
 
