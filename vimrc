@@ -68,6 +68,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
+Plug 'vim-scripts/sql.vim--Stinson'
 
 call plug#end()
 
@@ -140,6 +141,7 @@ if exists('+colorcolumn')
 endif
 " }}}
 " Searching {{{
+set gdefault                  " add the `g` flag to search/replace by default
 " }}}
 " Folding {{{
 set foldenable
