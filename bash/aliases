@@ -91,9 +91,9 @@ function browse {
       fi
     fi
 
-    echo "Opening \"http://localhost:$port\" in your browser…"
+    echo "Opening \"http://localhost:${port}\" in your browser…"
 
-    xdg-open "http://localhost:$port" > /dev/null 2>&1 &
+    xdg-open "http://localhost:${port}" > /dev/null 2>&1 &
   fi
 }
 
