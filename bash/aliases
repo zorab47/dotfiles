@@ -59,8 +59,29 @@ alias csd='cap staging deploy'
 alias open='xdg-open'
 
 # ThingM Blink
-alias bl="blink1 --random=3 -t 300 -q; blink1 --off -q"
 alias blink=blink1
+
+function bl {
+  if [[ $# -gt 0 ]]; then
+    "$@"
+
+    status=$?
+
+    light_red="C00000"
+    light_green="00C000"
+    status_color=$light_green
+
+    if [[ $status -gt 0 ]]; then
+      status_color=$light_red
+    fi
+
+    blink1 --rgb=$status_color --glimmer=5 -q &
+
+    return $status
+  else
+    blink1 --random=3 -t 300 -q && blink1 --off -q &
+  fi
+}
 
 function g {
   if [[ $# -gt 0 ]]; then
