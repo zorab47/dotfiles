@@ -6,11 +6,11 @@ set nocompatible
 
 call plug#begin()
 
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'airblade/vim-gitgutter'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
 Plug 'bling/vim-airline'
@@ -23,11 +23,13 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'drmikehenry/vim-fontsize'
 Plug 'ecomba/vim-ruby-refactoring'
+Plug 'edsono/vim-matchit'
 Plug 'gabebw/vim-spec-runner'
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
@@ -46,9 +48,11 @@ Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
+Plug 'shmup/vim-sql-syntax'
 Plug 'thomwiggers/vim-colors-solarized'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -66,9 +70,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 Plug 'zaiste/tmux.vim'
+Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
 Plug 'zorab47/vim-gams'
-Plug 'shmup/vim-sql-syntax'
 
 call plug#end()
 
@@ -98,7 +104,8 @@ set backspace=indent,eol,start
 set timeoutlen=500
 " }}}
 " Digraphs {{{
-digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'
+digraphs .. 8230              " Ellipsis  (…) mapped to '..'
+digraphs ck 10003             " Checkmark (✓) mapped to 'ck'
 " }}}
 " Spaces & Tabs {{{
 set tabstop=2                 " number of visual spaces per TAB
@@ -149,6 +156,9 @@ set foldlevelstart=10   " open most folds by default to
 set foldnestmax=10      " 10 nested fold max
 " }}}
 " Leader Shortcuts {{{
+
+let mapleader = " "
+
 " open NerdTree
 nnoremap <leader>b :NERDTreeFind<CR>
 
@@ -256,7 +266,8 @@ vnoremap <F1> <ESC>
 " --------------
 
 " Tabularize {{{
-" if exists(":Tabularize")
+call plug#load('tabular')
+if exists(":Tabularize")
 " mnemonic: (a)lign
 
   " Ruby
@@ -296,7 +307,7 @@ vnoremap <F1> <ESC>
   " Align ruby blocks, but ignore string interpolation
   AddTabularPattern! ruby_block /[^#]\@<={/
 
-" endif
+endif
 " }}}
 " NERD Tree {{{
 let NERDTreeMinimalUI = 1
