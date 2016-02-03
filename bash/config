@@ -1,6 +1,8 @@
+#!/bin/bash
+
 umask 022
 
-# don't put duplicate lines in the history. See bash(1) for more options
+# don't put duplicate lines in the history.
 export HISTCONTROL=ignoreboth
 export HISTSIZE=50000
 
@@ -83,20 +85,31 @@ xterm*|rxvt*)
     ;;
 esac
 
-export MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
-if command -v rbenv >/dev/null 2>&1; then
-  eval "$(rbenv init -)"
+# ╺┳╸┏┳┓╻ ╻╻ ╻
+#  ┃ ┃┃┃┃ ┃┏╋┛
+#  ╹ ╹ ╹┗━┛╹ ╹
+#
+# Display tmux session name
+if [[ -n "$TMUX" ]] ; then
+  session_name=$(tmux list-pane -F '#S' | head -1)
+  cat_cmd="cat"
+
+  if hash lolcat 2>/dev/null; then
+    cat_cmd="lolcat"
+  fi
+
+  hash toilet 2>/dev/null; pretty_print=$?
+
+  if [[ $pretty_print -eq 0 ]]; then
+    toilet -f future "$session_name" | "$cat_cmd"
+  else
+    printf "\nTMUX Session: %s\n" "$session_name" | "$cat_cmd"
+  fi
 fi
 
 # Add project's bin/ to PATH after rbenv init.
 export PATH=".git/safe/../../bin:${PATH}"
-
-
-# Setup autojump, a faster way to navigate directories.
-if command -v autojump >/dev/null 2>&1; then
-  source /usr/share/autojump/autojump.bash
-fi
 
 # Colored man pages: http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
 # Less Colors for Man Pages
@@ -107,5 +120,7 @@ export LESS_TERMCAP_se=$'\E[0m'                # end standout-mode
 export LESS_TERMCAP_so=$'\E[48;5;3m\E[38;5;0m' # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'                # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;5m'        # begin underline
+
+export MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
 # vim: ft=sh
