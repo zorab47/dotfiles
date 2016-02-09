@@ -76,6 +76,12 @@ Plug 'zaiste/tmux.vim'
 Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
 Plug 'zorab47/vim-gams'
 
+Plug 'klen/python-mode'
+Plug 'jcfaria/Vim-R-plugin'
+Plug 'AlessandroYorba/Alduin'
+Plug 'nanotech/jellybeans.vim'
+Plug 'rhysd/devdocs.vim'
+
 call plug#end()
 
 " }}}
@@ -401,6 +407,8 @@ augroup vimrc
 
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
+
+  autocmd FileType c,cpp,rust,haskell,python,ruby nmap <buffer>K <Plug>(devdocs-under-cursor)
 
   autocmd ColorScheme * highlight clear SignColumn
 
