@@ -24,10 +24,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'drmikehenry/vim-fontsize'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'edsono/vim-matchit'
-Plug 'gabebw/vim-spec-runner'
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -68,6 +68,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-projectionist'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'xolox/vim-misc'
@@ -271,6 +272,10 @@ vnoremap <F1> <ESC>
 " Plugin Configs
 " --------------
 
+" Slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1.1"}
+
 " Tabularize {{{
 call plug#load('tabular')
 if exists(":Tabularize")
@@ -295,6 +300,10 @@ if exists(":Tabularize")
   " hash keys (a)lign (k)eys
   nmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
   vmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
+
+  " (a)lign ruby (p)roc literals
+  nmap <Leader>ap :Tabularize /-><CR>
+  vmap <Leader>ap :Tabularize /-><CR>
 
   " R script
   nmap <Leader>a< :Tabularize /<-<CR>
@@ -342,7 +351,9 @@ let g:syntastic_check_on_wq = 0
 " let g:syntastic_ruby_checkers = ['rubylint', 'mri']
 " }}}
 " Ctrl-P {{{
+let g:ctrlp_mruf_max = 250             " track recently used files
 let g:ctrlp_max_height = 20            " provide more space to display results
+let g:ctrlp_switch_buffer = ''         " don't try to switch buffers
 set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
 
 if executable('ag')
@@ -377,6 +388,9 @@ let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 augroup vimrc
   autocmd!
 
+  " Auto source vimrc on change
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
   autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell
@@ -390,8 +404,8 @@ augroup vimrc
   " Use hash as R comment string
   autocmd FileType r set commentstring=#\ %s
 
-  " Doing entries as markdown
-  autocmd BufRead /tmp/doing* setfiletype markdown
+  " jrnl entries as markdown
+  autocmd BufRead /tmp/jrnl* set filetype=markdown
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
