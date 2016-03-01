@@ -37,13 +37,6 @@ bindsym $mod+Return exec ~/.bin/i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu='rofi -dmenu -i -font "Dejavu Sans Mono 16"'
-
 # change focus
 
 bindsym $mod+h focus left
@@ -180,27 +173,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $black    #2d2d2d
-set $red      #f2777a
-set $green    #99cc99
-set $yellow   #ffcc66
-set $blue     #6699cc
-set $magenta  #cc99cc
-set $cyan     #66cccc
-set $white    #d3d0c8
-set $br_black #747369
-set $br_white #f2f0ec
-set $dk_black #393939
-set $color19  #515151
-set $color20  #a09f93
-set $color21  #e8e6df
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         font xft:Terminus 12
         status_command i3blocks
         position top
+        # tray_padding 1
         colors {
               # Solarized
               # background #073642
@@ -274,3 +253,6 @@ exec --no-startup-id gnome-screensaver
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id compton -CG
+
+# multi-clipboard
+exec --no-startup-id diodon
