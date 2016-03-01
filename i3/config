@@ -24,13 +24,15 @@ workspace_auto_back_and_forth yes
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:Ubuntu Mono 10
-font xft:DajaVu Sans 11
+# font xft:DajaVu Sans 11
+# font xft:Standard Symbols 9.5
+font xft:SFNS Display 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec ~/.bin/i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -77,6 +79,9 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
+# bar toggle, hide or show
+bindsym $mod+slash bar mode toggle
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -94,6 +99,24 @@ bindsym $mod+a focus parent
 # focus the child container
 # bindsym $mod+d focus child
 
+set $black    #2d2d2d
+set $red      #f2777a
+set $green    #99cc99
+set $yellow   #ffcc66
+set $blue     #6699cc
+set $magenta  #cc99cc
+set $cyan     #66cccc
+set $white    #d3d0c8
+set $br_black #747369
+set $br_white #f2f0ec
+set $dk_black #393939
+set $color19  #515151
+set $color20  #a09f93
+set $color21  #e8e6df
+
+# workspace fancy names
+set $workspace9 "9 "
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -103,7 +126,7 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $mod+9 workspace $workspace9
 
 # scratchpad
 bindsym $mod+0       scratchpad show
@@ -120,7 +143,7 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+9 move container to workspace $workspace9
 # bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
@@ -207,16 +230,42 @@ client.focused           $blue     $blue     $br_white  $red
 client.focused_inactive  $white    $white    $black     #484e50
 client.unfocused         $br_black $br_black $br_white  #292d2e
 
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d       exec --no-startup-id j4-dmenu-desktop --dmenu='rofi -dmenu -i -font "SFNS Display Thin 20"'
+#
+# -bc border-color
+# -bg
+# -fg
+# -hlbg
+# -hlfg
+
+bindsym $mod+d       exec j4-dmenu-desktop --dmenu='rofi -dmenu -i -bc "$br_black" -bg "$black" -fg "$br_white" -hlbg "$blue" -hlfg "$br_white" -font "SFNS Display Thin 20"'
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run -i -font "SFNS Display Thin 20"
+
 # switching between workspace
 # http://i3wm.org/docs/userguide.html#_changing_named_workspaces_moving_to_workspaces
 bindsym $mod+period workspace next
 bindsym $mod+comma  workspace prev
 
-bindsym Control+Mod1+L exec i3lock --dpms --color=747369
+bindsym Control+Mod1+L exec ~/.bin/i3lock-wrapper --dpms
 
 bindsym XF86Calculator exec gnome-calculator
 bindsym $mod+m         exec thunar
 bindsym $mod+b         exec firefox
+
+# find windows class properties with `xprop` command
+
+# floaters
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Firefox" window_role="page-info"] floating enable
+for_window [class="Gnome-terminal"] border pixel 3
+
+# default workspaces
+assign [class="HipChat"] → $workspace9
 
 exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
