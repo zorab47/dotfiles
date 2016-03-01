@@ -3,8 +3,11 @@
 OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
 
 # some more ls aliases
-alias ll='ls -l'
+alias ll='ls -lF'
 alias l='ls -lF'
+alias lt='ls -ltF'
+
+alias so='source ~/.bash/aliases; echo "Reloaded ~/.bash/aliases"'
 
 # cd
 alias ..='cd ..'
