@@ -2,3 +2,4 @@
 .svn
 .*.swp
 .env
+.rake_tasks~

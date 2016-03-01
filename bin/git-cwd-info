@@ -7,16 +7,16 @@
 #
 # Rewritten as shell script simply for speed
 
-GIT_REPO_PATH=`git rev-parse --git-dir 2>/dev/null`
+GIT_REPO_PATH=$(git rev-parse --git-dir 2>/dev/null)
 max_branch_length=30
 
 if [[ $GIT_REPO_PATH != '' && $GIT_REPO_PATH != '~' && $GIT_REPO_PATH != "$HOME/.git" ]]; then
 
-  GIT_BRANCH=`git symbolic-ref -q HEAD | sed 's/refs\/heads\///'`
+  GIT_BRANCH=$(git symbolic-ref -q HEAD | sed 's/refs\/heads\///')
   branch_length=${#GIT_BRANCH}
 
   if [[ "$branch_length" -gt "$max_branch_length" ]]; then
-    GIT_BRANCH="`echo $GIT_BRANCH | head -c $max_branch_length`…"
+    GIT_BRANCH="$(echo "$GIT_BRANCH" | head -c $max_branch_length)…"
   fi
 
   GIT_COMMIT_ID=`git rev-parse --short HEAD 2>/dev/null`
