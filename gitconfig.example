@@ -1,6 +1,6 @@
 [user]
-  name = ${name}
-  email = ${email}
+  name = AUTHORNAME
+  email = AUTHOREMAIL
 [alias]
   st = status -s
   s = status -s
@@ -28,8 +28,9 @@
   # http://jerodsanto.net/2014/09/git-a-list-of-commits-on-one-branch-but-not-the-other
   contrast = log --left-right --graph --cherry-pick --oneline
 [color]
-  status = true
+  status = auto
   diff = auto
+  branch = auto
   ui = true
 [color "branch"]
   current = yellow reverse
