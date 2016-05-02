@@ -238,10 +238,14 @@ bindsym $mod+b         exec firefox
 
 # find windows class properties with `xprop` command
 
-# floaters
+# floater windows
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Firefox" window_role="page-info"] floating enable
-for_window [class="Gnome-terminal"] border pixel 3
+
+# hide window title bar
+for_window [class="Gnome-terminal"]   border pixel 3
+for_window [class="chromium-browser"] border pixel 3
+for_window [class="Firefox"]          border pixel 3
 
 # default workspaces
 assign [class="HipChat"] → $workspace9
