@@ -1,0 +1,29 @@
+# Reload configuration by:
+#
+#    xrdb ~/.Xresources
+
+#include ".Xresources.d/base16-eighties.dark.256"
+
+Xcursor.theme: DMZ-White
+
+URxvt.font:                xft:Inconsolata\\-g for Powerline:style=g:size=12
+URxvt.boldFont:            xft:Inconsolata\\-g for Powerline:style=g:size=12:bold
+URxvt.italicFont:          xft:Inconsolata\\-g for Powerline:style=g:size=12:italic
+URxvt.boldItalicFont:      xft:Inconsolata\\-g for Powerline:style=g:size=12:bold:italic
+URxvt.letterSpace:         -1
+
+URxvt.internalBorder:      0
+URxvt.externalBorder:      0
+
+URxvt.scrollBar:           false
+
+URxvt*fading:              30
+
+URxvt.perl-ext-common:     matcher,resize-font,foo
+
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger:  C-Up
+
+URxvt.url-launcher:        /usr/bin/chromium
+URxvt.keysym.M-Delete:     perl:matcher:list
+URxvt.colorUL:             #7780a1
