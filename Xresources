@@ -1,6 +1,6 @@
-# Reload configuration by:
-#
-#    xrdb ~/.Xresources
+! Reload configuration by:
+!
+!    xrdb ~/.Xresources
 
 #include ".Xresources.d/base16-eighties.dark.256"
 
