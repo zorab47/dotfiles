@@ -1,6 +1,9 @@
 " Launch Config {{{
-set encoding=utf-8
-scriptencoding utf-8
+
+if !has('vim_starting')
+  set encoding=utf-8
+  scriptencoding utf-8
+endif
 
 set nocompatible
 
@@ -9,49 +12,51 @@ call plug#begin()
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'airblade/vim-gitgutter'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
-Plug 'chriskempson/base16-shell'
-Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-sort-motion'
+Plug 'christoomey/vim-system-copy'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'drmikehenry/vim-fontsize'
-Plug 'ecomba/vim-ruby-refactoring'
+Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'edsono/vim-matchit'
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
-Plug 'jpalardy/vim-slime'
+Plug 'itchyny/lightline.vim'
+Plug 'jcfaria/Vim-R-plugin', { 'for': 'r' }
+Plug 'joker1007/vim-markdown-quote-syntax', { 'for': 'markdown' }
+Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
+Plug 'klen/python-mode',     { 'for': 'python' }
 Plug 'ktonga/vim-follow-my-lead'
-Plug 'miyakogi/conoline.vim'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'noahfrederick/vim-hemisu'
-Plug 'noahfrederick/vim-noctu'
-Plug 'pangloss/vim-javascript'
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit'] }
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rhysd/devdocs.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
-Plug 'shmup/vim-sql-syntax'
-Plug 'thomwiggers/vim-colors-solarized'
-Plug 'thoughtbot/vim-rspec'
+Plug 'shmup/vim-sql-syntax', { 'for': 'sql' }
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tmux-plugins/vim-tmux'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -60,8 +65,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-haml',     { 'for': 'haml' }
+Plug 'tpope/vim-markdown', { 'for': ['markdown', 'gitcommit'] }
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
@@ -69,42 +75,57 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-projectionist'
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-Plug 'zaiste/tmux.vim'
-Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
-Plug 'zorab47/vim-gams'
+Plug 'xiaogaozi/easy-gitlab.vim'
+Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
-Plug 'klen/python-mode'
-Plug 'jcfaria/Vim-R-plugin'
+" Color schemes
 Plug 'AlessandroYorba/Alduin'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/base16-shell'
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'rhysd/devdocs.vim'
+Plug 'noahfrederick/vim-hemisu'
+Plug 'noahfrederick/vim-noctu'
+Plug 'thomwiggers/vim-colors-solarized'
 
 call plug#end()
-
 " }}}
 " Colors {{{
+
+" ┏━╸┏━┓╻  ┏━┓┏━┓┏━┓
+" ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
+" ┗━╸┗━┛┗━╸┗━┛╹┗╸┗━┛
+
 syntax enable
 set background=dark
 
-if &t_Co < 256
-  colorscheme bluegreen
+if &t_Co >= 256
+  " let g:base16_shell_path = "~/.bash/base16-shell"
+  " let base16colorspace=256  " Access colors present in 256 colorspace
+  " colorscheme base16-colors
+
+  " Eighties
+  " colorscheme base16-eighties
+
+  let g:solarized_termcolors = 256
+  let g:solarized_degrade = 1
+
+  " Seoul
+  let g:seoul256_background = 235
+  let g:seoul256_light_background = 256
+  colorscheme seoul256
+
+  " if &term =~ 'screen-256color' && exists('$TMUX')
+  "   " disable Background Color Erase (BCE) so that color schemes
+  "   " render properly when inside 256-color tmux and GNU screen.
+  "   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  "   set t_ut=
+  " endif
 else
-  let g:base16_shell_path = "~/.bash/base16-shell"
-  let base16colorspace=256  " Access colors present in 256 colorspace
-  colorscheme base16-eighties
-
-  if &term =~ 'screen-256color' && exists('$TMUX')
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-  endif
-
+  colorscheme default
 endif
 " }}}
 " Misc {{{
@@ -113,7 +134,6 @@ set timeoutlen=500
 " }}}
 " Digraphs {{{
 digraphs .. 8230              " Ellipsis  (…) mapped to '..'
-digraphs ck 10003             " Checkmark (✓) mapped to 'ck'
 " }}}
 " Spaces & Tabs {{{
 set tabstop=2                 " number of visual spaces per TAB
@@ -127,27 +147,30 @@ set shiftround                " round shifts to a multiple of shiftwidth
 set number                    " show line numbers
 set nowrap                    " do not wrap long lines
 set showcmd                   " display incomplete commands
-set cursorline                " highlights row with cursor
+" set cursorline                " highlights row with cursor
 " set cursorcolumn              " highlights column with the cursor
 set title                     " change the terminal's title
 set wildmenu                  " visual autocomplete for command menu
 set wildignore=*.swp          " ignore swp files in completion
 set list                      " show whitespace chars
-set listchars=tab:»\ ,trail:·  " display tabs as » and trailing spaces as ·
+set listchars=tab:»\ ,trail:· " display tabs as » and trailing spaces as ·
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
-set ttyfast                   " Send more characters for redraws
-set shortmess=atI             " Don’t show the intro message when starting Vim
-set cmdheight=2               " more room to display messages
+set shortmess=atIToO          " Don’t show the intro message when starting Vim
+set cmdheight=1               " more room to display messages
 set scrolloff=10              " keep cursor line from the bottom of the window
 set sidescrolloff=15          " keep cursor line from the bottom of the window
 set sidescroll=1              " keep cursor line from the bottom of the window
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
 set laststatus=2              " Always show status line of last window
-set showmode                  " Show current mode in the modeline
+set noshowmode                " Show current mode in the modeline
 set ruler                     " Show line and column number
 filetype plugin indent on     " load filetype-specific indent and plugin files
+
+if !has('nvim')
+  set ttyfast                 " Send more characters for redraws
+endif
 
 set mouse=a                   " enable mouse
 
@@ -165,10 +188,10 @@ set foldnestmax=10      " 10 nested fold max
 " }}}
 " Leader Shortcuts {{{
 
-let mapleader = " "
+let mapleader=' '       " Space for leader key instead of the default: \
 
-" open NerdTree
-nnoremap <leader>b :NERDTreeFind<CR>
+" Reformat visual selection as JSON
+vnoremap <Leader>j !python -m json.tool<CR>
 
 " edit vimrc and reload vimrc - mnemonic: (e)dit(v)imrc, (r)eload(v)imrc
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
@@ -178,9 +201,10 @@ nnoremap <leader>rv :source $MYVIMRC<CR>
 map <Leader>n :tabe ~/todo.md<CR>
 
 " edit global improvement / tool sharpening list
-map <Leader>i :tabe ~/tool_sharpening.md<CR>
+" map <Leader>i :tabe ~/tool_sharpening.md<CR>
 
 " Execute Dispatch for current file
+set shell=/bin/bash               " required for Dispatch in the fish shell
 map <Leader>d :w<CR>:Dispatch<CR>
 
 " Execute RSpec for current file
@@ -188,24 +212,23 @@ map <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
 map <Leader>s :w<CR>:call RunNearestSpec()<CR>
 map <Leader>l :w<CR>:call RunLastSpec()<CR>
 map <Leader>as :w<CR>:call RunAllSpecs()<CR>
-let g:rspec_command = "Dispatch rspec {spec}"
-
-" Paste from system clipboard
-map <Leader>p :set paste<CR>o<ESC>"+]p:set nopaste<CR>
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 
 " Edit snippets - mnemonic: (e)dit(s)nippets
 map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
 
+nnoremap <leader>fw :FixLastSpellingError<CR>
+
+" Paste from system clipboard
+map <Leader>p :set paste<CR>o<ESC>"+p:set nopaste<CR>
+
 " Yank to system clipboard
 map <Leader>y "+y
 
-nnoremap <leader>fw :FixLastSpellingError<CR>
-
-" TODO
 " copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
 " this is helpful to paste someone the path you're looking at
-nnoremap <silent> <Leader>cf :let @* = expand("%:~")<CR>
-nnoremap <silent> <Leader>cn :let @* = expand("%:t")<CR>
+nnoremap <silent> <Leader>cf :let @+ = expand("%:~")<CR>
+nnoremap <silent> <Leader>cn :let @+ = expand("%:t")<CR>
 
 " Leader shortcuts for Rails commands
 " map <Leader>m :Rmodel
@@ -273,6 +296,31 @@ vnoremap <F1> <ESC>
 " Plugin Configs
 " --------------
 
+" Visual select; then `glo` to do a Gitlab Open
+let g:easy_gitlab_url = 'https://git.orm-tech.com'
+
+let g:goyo_width = 82
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 " Slime
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1.1"}
@@ -306,6 +354,10 @@ if exists(":Tabularize")
   nmap <Leader>ap :Tabularize /-><CR>
   vmap <Leader>ap :Tabularize /-><CR>
 
+  " Markdown
+  nmap <Leader>a\| :Tabularize /\|<CR>
+  vmap <Leader>a\| :Tabularize /\|<CR>
+
   " R script
   nmap <Leader>a< :Tabularize /<-<CR>
   vmap <Leader>a< :Tabularize /<-<CR>
@@ -317,7 +369,7 @@ if exists(":Tabularize")
   nmap <Leader>aw :Tabularize whitespace<CR>
   vmap <Leader>aw :Tabularize whitespace<CR>
 
-  call plug#load('tabular')
+  " Align on whitespace
   AddTabularPattern! whitespace / \+\zs/l1r0
 
   " Align ruby blocks, but ignore string interpolation
@@ -325,30 +377,16 @@ if exists(":Tabularize")
 
 endif
 " }}}
-" NERD Tree {{{
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-" }}}
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
 
-" mark syntax errors with :signs
-let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump     = 0      " don't auto jump to the error when saving the file
+let g:syntastic_auto_loc_list = 0      " show the error list automatically
+let g:syntastic_check_on_open = 1      " check syntax on open too
+let g:syntastic_check_on_wq   = 0      " skip syntax check when writing and quitting
+let g:syntastic_enable_signs  = 1      " mark syntax errors with :signs
 
-" automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
-
-" show the error list automatically
-let g:syntastic_auto_loc_list=0
-
-" don't care about warnings
-" let g:syntastic_quiet_messages = {'level': 'warnings'}
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-
-let g:syntastic_check_on_wq = 0
-
+" let g:syntastic_quiet_messages = {'level': 'warnings'} " don't care about warnings
 " let g:syntastic_ruby_checkers = ['rubylint', 'mri']
 " }}}
 " Ctrl-P {{{
@@ -364,33 +402,30 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
-
 " }}}
-" Airline {{{
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" Use unicode character separators instead of patched fonts for portability
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-
+" Lightline {{{
+source $HOME/.vim/lightline.vim
 " }}}
-" Invetigate.vim {{{
+" Investigate.vim {{{
 let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 " }}}
 " AutoGroups {{{
 augroup vimrc
   autocmd!
 
+  " Only display cursor line in active buffer
+  autocmd BufWinEnter,WinEnter * setlocal cursorline
+  autocmd BufWinLeave,WinLeave * setlocal nocursorline
+
+  autocmd BufWinEnter,WinEnter * setlocal cursorcolumn
+  autocmd BufWinLeave,WinLeave * setlocal nocursorcolumn
+
+  " Only display reference column in active buffer
+  autocmd BufWinEnter,WinEnter * setlocal colorcolumn=81
+  autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
+
   " Auto source vimrc on change
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
   autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell
@@ -402,8 +437,11 @@ augroup vimrc
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
 
-  " Use hash as R comment string
+  " Use # as R comment string
   autocmd FileType r set commentstring=#\ %s
+
+  " Use -- as SQL comment string
+  autocmd FileType sql set commentstring=--\ %s
 
   " jrnl entries as markdown
   autocmd BufRead /tmp/jrnl* set filetype=markdown
@@ -439,10 +477,8 @@ augroup END
   vmap <leader>gt <Plug>Titlecase
   nmap <leader>gT <Plug>TitlecaseLine
 " }}}
-" Conoline {{{
-let g:conoline_use_colorscheme_default_normal=1
-let g:conoline_use_colorscheme_default_insert=1
-" }}}
+
+let g:pymode_lint = 0
 
 " Backups {{{
 set nobackup
@@ -469,4 +505,4 @@ augroup vimrcEx
 augroup END
 " }}}
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=1
