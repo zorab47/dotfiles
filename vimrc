@@ -193,9 +193,6 @@ set foldnestmax=10      " 10 nested fold max
 
 let mapleader=' '       " Space for leader key instead of the default: \
 
-" Reformat visual selection as JSON
-vnoremap <Leader>j !python -m json.tool<CR>
-
 " edit vimrc and reload vimrc - mnemonic: (e)dit(v)imrc, (r)eload(v)imrc
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>rv :source $MYVIMRC<CR>
@@ -455,6 +452,8 @@ augroup vimrc
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+  autocmd FileType json set formatprg=python\ -mjson.tool
 
   " Use Ruby syntax on Arbre template files
   autocmd BufRead,BufNewFile *.arb setfiletype ruby
