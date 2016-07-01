@@ -83,13 +83,12 @@ Plug 'zorab47/vim-gams', { 'for': 'gams' }
 " Color schemes
 Plug 'AlessandroYorba/Alduin'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'chriskempson/base16-shell'
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
-Plug 'noahfrederick/vim-noctu'
 Plug 'thomwiggers/vim-colors-solarized'
+Plug 'sjl/badwolf'
 
 call plug#end()
 " }}}
@@ -98,6 +97,10 @@ call plug#end()
 " ┏━╸┏━┓╻  ┏━┓┏━┓┏━┓
 " ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
 " ┗━╸┗━┛┗━╸┗━┛╹┗╸┗━┛
+
+if has("nvim")
+  set termguicolors           " Make use of 24-bit colors
+endif
 
 syntax enable
 set background=dark
@@ -402,6 +405,10 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+" }}}
+" Splitjoin {{{
+let g:splitjoin_normalize_whitespace=1
+let g:splitjoin_align=1
 " }}}
 " Lightline {{{
 source $HOME/.vim/lightline.vim
