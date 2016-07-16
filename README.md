@@ -22,6 +22,17 @@ Optional applications which enhance bash, vim, etc.
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
 
+### Browser Plug-ins
+
+#### Firefox
+
+- [It's All Text!](https://addons.mozilla.org/en-US/firefox/addon/its-all-text): Edit textareas using an external editor
+- [Markdown Here](https://addons.mozilla.org/en-US/firefox/addon/markdown-here)
+- [Markdown Viewer](https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer)
+- [Nimbus Screen Capture](https://addons.mozilla.org/en-US/firefox/addon/nimbus-Screenshot)
+- [Octotree](https://addons.mozilla.org/en-US/firefox/addon/octotree) file hierarchy tree for Github.
+- [VimFx](https://addons.mozilla.org/firefox/addon/vimfx): Vim keyboard shortcuts for Firefox
+
 ### Development Tools
 
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md)
@@ -46,6 +57,7 @@ fc-cache -fv  # update font caches
 - brice
 - hirb
 - looksee
+- [sqlint](https://github.com/purcell/sqlint)
 
 ```
 gem install awesome_print brice hirb looksee
