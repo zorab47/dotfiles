@@ -139,9 +139,16 @@ install_dotfiles () {
   done
 }
 
+install_fishconfig () {
+  local overwrite_all=false backup_all=false skip_all=false
+
+  link_file "$DOTFILES_ROOT/fish" "$HOME/.config/fish"
+}
+
 setup_gitconfig "$1" "$2"
 install_dotfiles
-link_file "$DOTFILES_ROOT/fish" "$HOME/.config/fish"
+install_fishconfig
+
 
 echo ''
 echo '  All installed!'
