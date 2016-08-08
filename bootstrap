@@ -141,6 +141,7 @@ install_dotfiles () {
 
 setup_gitconfig "$1" "$2"
 install_dotfiles
+link_file "$DOTFILES_ROOT/fish" "$HOME/.config/fish"
 
 echo ''
 echo '  All installed!'

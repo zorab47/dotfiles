@@ -3,6 +3,8 @@
 vim/.netrwhist
 vim/plugged
 vim/shada
+fish/fish_history
+fish/fishd.*
 
 **/doc/tags
 
