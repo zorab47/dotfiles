@@ -22,6 +22,11 @@ Optional applications which enhance bash, vim, etc.
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
 
+### Notifications
+
+- [Pushover](https://pushover.net) for simple notifications for long running
+  processes to iOS or Android devices
+
 ### Browser Plug-ins
 
 #### Firefox
