@@ -162,8 +162,8 @@ set modeline                  " always show modeline
 set shortmess=atIToO          " Don’t show the intro message when starting Vim
 set cmdheight=1               " more room to display messages
 set scrolloff=10              " keep cursor line from the bottom of the window
-set sidescrolloff=15          " keep cursor line from the bottom of the window
-set sidescroll=1              " keep cursor line from the bottom of the window
+set sidescrolloff=15          " keep cursor from the side of the window
+set sidescroll=1              " minimum number of columns to scroll horizontally
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
 set laststatus=2              " Always show status line of last window
@@ -196,6 +196,9 @@ let mapleader=' '       " Space for leader key instead of the default: \
 " edit vimrc and reload vimrc - mnemonic: (e)dit(v)imrc, (r)eload(v)imrc
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>rv :source $MYVIMRC<CR>
+
+" Tmux Write
+map <Leader>w :Twrite<CR>
 
 " edit global todo list
 map <Leader>n :tabe ~/todo.md<CR>
@@ -456,10 +459,10 @@ augroup vimrc
   autocmd FileType json set formatprg=python\ -mjson.tool
 
   " Use Ruby syntax on Arbre template files
-  autocmd BufRead,BufNewFile *.arb setfiletype ruby
+  autocmd BufRead,BufNewFile *.arb set filetype=ruby
 
   " Use Ruby syntax on Capistrano files
-  autocmd BufRead,BufNewFile *.cap setfiletype ruby
+  autocmd BufRead,BufNewFile *.cap set filetype=ruby
 
   " Setup vim-dispatch for RSpec files
   autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = 'rspec %'
