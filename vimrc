@@ -448,7 +448,7 @@ augroup vimrc
   autocmd FileType sql set commentstring=--\ %s
 
   " jrnl entries as markdown
-  autocmd BufRead /tmp/jrnl* set filetype=markdown
+  autocmd BufRead /tmp/jrnl* setlocal filetype=markdown sidescrolloff=0
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
