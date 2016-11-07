@@ -9,12 +9,18 @@ set nocompatible
 
 call plug#begin()
 
+Plug 'mattly/vim-markdown-enhancements'
+Plug 'mhinz/vim-halo'
+Plug 'junegunn/vim-emoji'
+" Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
+
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
+Plug 'beloglazov/vim-online-thesaurus'
 " Plug 'bling/vim-airline'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
@@ -37,7 +43,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'beloglazov/vim-online-thesaurus'
+Plug 'justinmk/vim-gtfo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
