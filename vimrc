@@ -26,7 +26,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'drmikehenry/vim-fontsize'
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
-Plug 'benjifisher/matchit.zip'
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
@@ -256,6 +255,15 @@ nnoremap <silent> <Leader>cn :let @+ = expand("%:t")<CR>
 
 map <Leader>sc :RVschema<space>
 map <Leader>ag :tabe<CR>:Ag<space>
+
+" ----------------------------------------------------------------------------
+" Markdown headings
+" ----------------------------------------------------------------------------
+nnoremap <leader>1 m`yypVr=``
+nnoremap <leader>2 m`yypVr-``
+nnoremap <leader>3 m`^i### <esc>``4l
+nnoremap <leader>4 m`^i#### <esc>``5l
+nnoremap <leader>5 m`^i##### <esc>``6l
 " }}}
 " Abbreviations {{{
 ab zaa ActiveAdmin
@@ -271,12 +279,14 @@ ab <expr> zdt strftime("%Y-%m-%d %H:%M:%S")
 " quickly open new tabs
 nnoremap <C-W>e :tabe<cr>
 
-map <F10> :NERDTreeFind<CR>
-map  <F9> :NERDTreeFind<CR>
-
 " Avoid using escape key
-imap jj <Esc>
-imap jk <Esc>
+inoremap jj <Esc>
+xnoremap jj <Esc>
+cnoremap jj <C-c>
+
+inoremap jk <Esc>
+xnoremap jk <Esc>
+cnoremap jk <C-c>
 
 " Duplicated selected text using v_D
 vmap D y'>p
@@ -421,6 +431,9 @@ let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 augroup vimrc
   autocmd!
 
+  " Auto source vimrc on change
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+
   " Only display cursor line in active buffer
   autocmd BufWinEnter,WinEnter * setlocal cursorline
   autocmd BufWinLeave,WinLeave * setlocal nocursorline
@@ -432,15 +445,15 @@ augroup vimrc
   autocmd BufWinEnter,WinEnter * setlocal colorcolumn=81
   autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
 
-  " Auto source vimrc on change
-  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
   autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell
 
   " Enable spellchecking for gitcommits
   autocmd FileType gitcommit setlocal spell complete+=kspell
+
+  " Unset paste on InsertLeave
+  autocmd InsertLeave * silent! set nopaste
 
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
