@@ -132,22 +132,23 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 1 | grep -v --file="symlink.exclusions")
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 1 | grep --invert-match --file="symlink.exclusions")
   do
     dst="$HOME/.$(basename "${src}")"
     link_file "$src" "$dst"
   done
 }
 
-install_fishconfig () {
+install_config_dirs () {
   local overwrite_all=false backup_all=false skip_all=false
 
   link_file "$DOTFILES_ROOT/fish" "$HOME/.config/fish"
+  link_file "$DOTFILES_ROOT/dunst" "$HOME/.config/dunst"
 }
 
 setup_gitconfig "$1" "$2"
 install_dotfiles
-install_fishconfig
+install_config_dirs
 
 
 echo ''
