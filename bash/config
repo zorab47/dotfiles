@@ -1,27 +1,16 @@
 #!/bin/bash
 
+# Sensible bash defaults
+[ -f ~/.bash/sensible.bash ] && source ~/.bash/sensible.bash
+
 umask 022
 
-# don't put duplicate lines in the history.
-export HISTCONTROL=ignoreboth
-export HISTSIZE=50000
-
-# set vim as the visual editor
+# set vim as *the* editor
 export VISUAL=vim
 export EDITOR=vim
 
 # set pager display ANSI colors
 export PAGER="less -FRSX"
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# Append to the Bash history file, rather than overwriting it
-shopt -s histappend
-
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
 
 # SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 # --------- ------- ---- -------  ----------- ---------- ----------- -----------
@@ -43,7 +32,7 @@ shopt -s cdspell
 # green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.bash/base16-shell/base16-eighties.dark.sh"
+# BASE16_SHELL="$HOME/.bash/base16-shell/base16-eighties.dark.sh"
 
 if [ -n "$BASE16_SHELL" ]; then
   source "$BASE16_SHELL"
@@ -72,16 +61,6 @@ cygwin|xterm-color)
     ;;
 *)
     PS1='\u@\h:\w\$ '
-    ;;
-esac
-
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-    ;;
-*)
     ;;
 esac
 

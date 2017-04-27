@@ -3,9 +3,22 @@
 vim/.netrwhist
 vim/plugged
 vim/shada
-fish/fish_history
-fish/fishd.*
-
 **/doc/tags
 
 fonts/Library
+
+fish/local.fish
+fish/fish_history
+fish/fishd.*
+fish/*/__*
+
+# Managed by Fisherman
+fish/functions/await.fish
+fish/functions/fish_greeting.fish
+fish/functions/fish_prompt.fish
+fish/functions/fish_right_prompt.fish
+fish/functions/fish_title.fish
+fish/functions/fzf_key_bindings.fish
+fish/functions/installer.fish
+fish/functions/last_job_id.fish
+
