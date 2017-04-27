@@ -255,6 +255,8 @@ bindsym XF86Calculator exec gnome-calculator
 bindsym $mod+m         exec thunar
 bindsym $mod+b         exec firefox
 bindsym $mod+BackSpace exec gnome-terminal -e jrnl --role=jrnl --geometry=85x33
+bindsym Print          exec scrot -e 'mv $f ~/Pictures/Screenshots'
+
 
 # find windows class properties with `xprop` command
 
@@ -269,15 +271,16 @@ for_window [class="chromium-browser"] border pixel 3
 for_window [class="Firefox"]          border pixel 3
 
 # default workspaces
-assign [class="HipChat"] → $workspace9
 assign [class="Slack"] → $workspace9
 
 exec --no-startup-id nm-applet
+exec --no-startup-id dispwin -L
 exec --no-startup-id nitrogen --restore
 
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id gnome-keyring-daemon
+exec --no-startup-id thunar --daemon
 exec --no-startup-id compton -CG
 exec --no-startup-id dropbox start
 
