@@ -12,7 +12,7 @@ set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 # source $fisher_home/config.fish
 
-chruby 2.3
+chruby 2.3.4
 
 if test -f ~/.config/fish/local.fish
   # Local config, credentials, etc.
