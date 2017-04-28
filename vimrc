@@ -360,8 +360,8 @@ if exists(":Tabularize")
   vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)[=>]\@!/<CR>
 
   " align ":" but not "::"
-  nmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
-  vmap <Leader>a: :Tabularize /[^:]\@<=:\zs\(:\)\@!<CR>
+  nmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
+  vmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
 
   nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
   vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
