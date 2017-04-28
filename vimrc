@@ -21,48 +21,53 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
 Plug 'beloglazov/vim-online-thesaurus'
-" Plug 'bling/vim-airline'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'christoomey/vim-conflicted'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
+Plug 'christoomey/vim-textobj-codeblock', { 'for': ['markdown'] }
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'drmikehenry/vim-fontsize'
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'jcfaria/Vim-R-plugin', { 'for': 'r' }
-Plug 'joker1007/vim-markdown-quote-syntax', { 'for': 'markdown' }
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
+" Plug 'junegunn/vim-emoji'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-gtfo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
-Plug 'klen/python-mode',     { 'for': 'python' }
-Plug 'ktonga/vim-follow-my-lead'
+Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'ktonga/vim-follow-my-lead' " Showing all your <Leader> mappings `<Leader>fml`
+Plug 'lifepillar/pgsql.vim', { 'for': ['sql', 'pgsql', 'markdown'] }
+Plug 'lifepillar/vim-cheat40'
+Plug 'mattly/vim-markdown-enhancements', { 'for': ['markdown', 'gitcommit'] }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
-Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit'] }
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
-Plug 'rhysd/devdocs.vim'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/syntastic'
-Plug 'shmup/vim-sql-syntax', { 'for': 'sql' }
+Plug 'reedes/vim-litecorrect', { 'for': ['markdown', 'gitcommit', 'text'] }
+Plug 'rhysd/devdocs.vim', { 'on': '<Plug>(devdocs-under-cursor)' }
+Plug 'rking/ag.vim', { 'on': 'Ag' }
+" Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
-Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -74,7 +79,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml',     { 'for': 'haml' }
 Plug 'tpope/vim-markdown', { 'for': ['markdown', 'gitcommit'] }
 Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-ragtag', { 'for': 'eruby' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -87,14 +92,13 @@ Plug 'xiaogaozi/easy-gitlab.vim'
 Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
 " Color schemes
-Plug 'AlessandroYorba/Alduin'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
-Plug 'noahfrederick/vim-hemisu'
-Plug 'thomwiggers/vim-colors-solarized'
-Plug 'sjl/badwolf'
+
+" Gvim
+if has("gui_running")
+  Plug 'drmikehenry/vim-fontsize'
+end
 
 call plug#end()
 " }}}
