@@ -1,3 +1,12 @@
+"
+" Sources of Vim inspiration
+"
+" - Ben Orenstein:    https://github.com/r00k/dotfiles
+" - Chris Toomey:     https://github.com/christoomey/dotfiles
+" - Junegun:          https://github.com/junegunn/dotfiles
+" - Lifepillar:       https://github.com/lifepillar/vimrc
+" - Wynn Netherland:  https://github.com/pengwynn/dotfiles
+"
 " Launch Config {{{
 
 if !has('vim_starting')
