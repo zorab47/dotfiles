@@ -8,13 +8,11 @@
 " - Wynn Netherland:  https://github.com/pengwynn/dotfiles
 "
 " Launch Config {{{
-
+set nocompatible " Must be first line
 if !has('vim_starting')
   set encoding=utf-8
   scriptencoding utf-8
 endif
-
-set nocompatible
 
 call plug#begin()
 
@@ -110,6 +108,26 @@ if has("gui_running")
 end
 
 call plug#end()
+
+" ----------------------------------------------------------------------------
+" matchit.vim
+" ----------------------------------------------------------------------------
+runtime! macros/matchit.vim
+
+" Settings
+let g:cheat40_use_default = 0
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'sql']
+let g:sql_type_default = 'pgsql'
+let g:vim_markdown_new_list_item_indent = 2
+
+" When the type of shell script is /bin/sh, assume a POSIX-compatible shell for
+" syntax highlighting purposes.
+" More on why: https://github.com/thoughtbot/dotfiles/pull/471
+let g:is_posix = 1
+
+syntax enable
+filetype plugin indent on     " load filetype-specific indent and plugin files
+
 " }}}
 " Colors {{{
 
@@ -117,27 +135,23 @@ call plug#end()
 " ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
 " ┗━╸┗━┛┗━╸┗━┛╹┗╸┗━┛
 
-if has("nvim")
-  set termguicolors           " Make use of 24-bit colors
+if has('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " Needed in tmux
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " Ditto
+  set termguicolors " Make use of 24-bit colors
 endif
 
-syntax enable
 set background=dark
 
+" Seoul
+let g:seoul256_background = 235
+let g:seoul256_light_background = 256
+
+" Gruvbox
+let g:gruvbox_italic=1                 " Enable italics in Gruvbox
+let g:gruvbox_improved_warnings=0      " Enable italics in Gruvbox
+
 if &t_Co >= 256
-  " let g:base16_shell_path = "~/.bash/base16-shell"
-  " let base16colorspace=256  " Access colors present in 256 colorspace
-  " colorscheme base16-colors
-
-  " Eighties
-  " colorscheme base16-eighties
-
-  let g:solarized_termcolors = 256
-  let g:solarized_degrade = 1
-
-  " Seoul
-  let g:seoul256_background = 235
-  let g:seoul256_light_background = 256
   colorscheme seoul256
 
   " if &term =~ 'screen-256color' && exists('$TMUX')
@@ -164,35 +178,56 @@ set shiftwidth=2
 set expandtab                 " convert tab to spaces
 set smarttab                  " smartly insert those tabs
 set shiftround                " round shifts to a multiple of shiftwidth
+set nojoinspaces              " prevent inserting two spaces after punctuation
 " }}}
 " UI Config {{{
 set number                    " show line numbers
 set nowrap                    " do not wrap long lines
 set showcmd                   " display incomplete commands
-" set cursorline                " highlights row with cursor
-" set cursorcolumn              " highlights column with the cursor
-set title                     " change the terminal's title
 set wildmenu                  " visual autocomplete for command menu
 set wildignore=*.swp          " ignore swp files in completion
 set list                      " show whitespace chars
-set listchars=tab:»\ ,trail:· " display tabs as » and trailing spaces as ·
+set listchars=                " Reset listchars
+set listchars+=tab:▸\         " Symbols to use for invisible characters
+set listchars+=trail:·        " trailing whitespace
+set listchars+=nbsp:•         " non-breaking space
+" set listchars+=precedes:←
+set listchars+=extends:→
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
-set shortmess=atIToO          " Don’t show the intro message when starting Vim
+set shortmess+=c              " Suppress ins-completion messages
+set shortmess+=I              " Suppress intro message when starting Vim
 set cmdheight=1               " more room to display messages
 set scrolloff=10              " keep cursor line from the bottom of the window
-set sidescrolloff=15          " keep cursor from the side of the window
+set sidescrolloff=5           " keep cursor from the side of the window
 set sidescroll=1              " minimum number of columns to scroll horizontally
 set splitright                " Opens vertical split right of current window
 set splitbelow                " Opens horizontal split below current window
 set laststatus=2              " Always show status line of last window
 set noshowmode                " Show current mode in the modeline
 set ruler                     " Show line and column number
-filetype plugin indent on     " load filetype-specific indent and plugin files
+set formatoptions+=1          " Do not wrap after a one-letter word
+set formatoptions+=j          " Remove extra comment when joining lines
+set diffopt+=vertical         " Diff in vertical mode by default
+set foldenable
+set foldlevelstart=10         " Open most folds by default to
+set foldnestmax=10            " 10 nested fold max
 
-if !has('nvim')
-  set ttyfast                 " Send more characters for redraws
-endif
+set autoread                  " Re-read file if it is changed by external program
+set hidden                    " Allow buffer switching without saving
+
+
+let &showbreak = '↳ '
+set breakindent
+set breakindentopt=sbr
+
+" Show block cursor in Normal mode and line cursor in Insert mode
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
+set ttyfast                   " Send more characters for redraws
 
 set mouse=a                   " enable mouse
 
@@ -203,18 +238,16 @@ endif
 " Searching {{{
 set gdefault                  " add the `g` flag to search/replace by default
 " }}}
-" Folding {{{
-set foldenable
-set foldlevelstart=10   " open most folds by default to
-set foldnestmax=10      " 10 nested fold max
-" }}}
-" Leader Shortcuts {{{
 
+" Leader Shortcuts {{{
 let mapleader=' '       " Space for leader key instead of the default: \
 
 " edit vimrc and reload vimrc - mnemonic: (e)dit(v)imrc, (r)eload(v)imrc
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>rv :source $MYVIMRC<CR>
+
+" Last inserted text
+nnoremap g. :normal! `[v`]<cr><left>
 
 " Tmux Write
 map <Leader>w :Twrite<CR>
@@ -234,7 +267,7 @@ map <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
 map <Leader>s :w<CR>:call RunNearestSpec()<CR>
 map <Leader>l :w<CR>:call RunLastSpec()<CR>
 map <Leader>as :w<CR>:call RunAllSpecs()<CR>
-let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec --format=progress {spec}"
 
 " Edit snippets - mnemonic: (e)dit(s)nippets
 map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
@@ -247,9 +280,9 @@ map <Leader>p :set paste<CR>o<ESC>"+p:set nopaste<CR>
 " Yank to system clipboard
 map <Leader>y "+y
 
-" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
-" this is helpful to paste someone the path you're looking at
+" copy current file path to clipboard - mnemonic: (c)urrent(f)ilename
 nnoremap <silent> <Leader>cf :let @+ = expand("%:~")<CR>
+" copy filename to clipboard - mnemonic: (c)urrent(n)name
 nnoremap <silent> <Leader>cn :let @+ = expand("%:t")<CR>
 
 " Leader shortcuts for Rails commands
@@ -272,20 +305,32 @@ nnoremap <silent> <Leader>cn :let @+ = expand("%:t")<CR>
 " map <Leader>sf :RSfunctionaltest
 " map <Leader>si :RSintegrationtest
 
-map <Leader>sc :RVschema<space>
-map <Leader>ag :tabe<CR>:Ag<space>
+" map <Leader>sc :RVschema<space>
+" map <Leader>ag :tabe<CR>:Ag<space>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+
+" ----------------------------------------------------------------------------
+" <Leader>I/A | Prepend/Append to all adjacent lines with same indentation
+" ----------------------------------------------------------------------------
+nmap <silent> <leader>I ^vii<C-V>I
+nmap <silent> <leader>A ^vii<C-V>$A
 
 " ----------------------------------------------------------------------------
 " Markdown headings
 " ----------------------------------------------------------------------------
-nnoremap <leader>1 m`yypVr=``
-nnoremap <leader>2 m`yypVr-``
-nnoremap <leader>3 m`^i### <esc>``4l
-nnoremap <leader>4 m`^i#### <esc>``5l
-nnoremap <leader>5 m`^i##### <esc>``6l
+nnoremap <silent> <leader>1 m`yypVr=``
+nnoremap <silent> <leader>2 m`yypVr-``
+nnoremap <silent> <leader>3 m`^i### <esc>``4l
+nnoremap <silent> <leader>4 m`^i#### <esc>``5l
+nnoremap <silent> <leader>5 m`^i##### <esc>``6l
+
 " }}}
 " Abbreviations {{{
 ab zaa ActiveAdmin
+ab zopp opportunity
+ab zOpp Opportunity
+ab zopps opportunities
+ab zOpps Opportunities
 
 " Date abbr: 2014-10-30
 ab <expr> zda strftime("%Y-%m-%d")
@@ -299,19 +344,18 @@ ab <expr> zdt strftime("%Y-%m-%d %H:%M:%S")
 nnoremap <C-W>e :tabe<cr>
 
 " Avoid using escape key
-inoremap jj <Esc>
-xnoremap jj <Esc>
-cnoremap jj <C-c>
-
-inoremap jk <Esc>
-xnoremap jk <Esc>
-cnoremap jk <C-c>
+imap jj <Esc>
+" cmap jj <C-c>
 
 " Duplicated selected text using v_D
 vmap D y'>p
 
+" Calendar
+command! Cal !cal -h 2017
+
 " Remove trailing whitespace using F5
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+command! Chomp %s/\s\+$// | normal! ``
+nnoremap <F5> :Chomp<CR>
 
 " Common Command Typos
 command! Q  quit    " converts ... :Q  => :q
@@ -325,6 +369,15 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 " }}}
+
+" ----------------------------------------------------------------------------
+" HL | Find out syntax group
+" ----------------------------------------------------------------------------
+function! s:hl()
+  " echo synIDattr(synID(line('.'), col('.'), 0), 'name')
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), '/')
+endfunction
+command! HL call <SID>hl()
 
 " Plugin Configs
 " --------------
@@ -354,9 +407,29 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-" Slime
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "1.1"}
+" vim-slash
+" noremap <plug>(slash-after) zz
+
+" ----------------------------------------------------------------------------
+" vim-ruby
+" ----------------------------------------------------------------------------
+" ft-ruby-syntax
+let ruby_indent_access_modifier_style = 'indent'
+let ruby_operators = 1
+let ruby_space_errors = 1
+let ruby_spellcheck_strings = 1
+
+" Seeing is Believing
+" Annotate every line
+" nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
+" Annotate marked lines
+" nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+" Remove annotations
+" nmap <leader>c :%.!seeing_is_believing --clean<CR>;
+" Mark the current line for annotation
+" nmap <leader>m A # => <Esc>
+" Mark the highlighted lines for annotation
+" vmap <leader>m :norm A # => <Esc>
 
 " Tabularize {{{
 call plug#load('tabular')
@@ -434,7 +507,11 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+  let &grepprg = 'ag --nogroup --nocolor --column'
+else
+  let &grepprg = 'grep -rn $* *'
 endif
+
 " }}}
 " Splitjoin {{{
 let g:splitjoin_normalize_whitespace=1
@@ -450,6 +527,9 @@ let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 augroup vimrc
   autocmd!
 
+  " Neomake
+  autocmd! BufWritePost * Neomake
+
   " Auto source vimrc on change
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
@@ -457,22 +537,28 @@ augroup vimrc
   autocmd BufWinEnter,WinEnter * setlocal cursorline
   autocmd BufWinLeave,WinLeave * setlocal nocursorline
 
-  autocmd BufWinEnter,WinEnter * setlocal cursorcolumn
-  autocmd BufWinLeave,WinLeave * setlocal nocursorcolumn
+  " autocmd BufWinEnter,WinEnter * setlocal cursorcolumn
+  " autocmd BufWinLeave,WinLeave * setlocal nocursorcolumn
 
   " Only display reference column in active buffer
   autocmd BufWinEnter,WinEnter * setlocal colorcolumn=81
   autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
 
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
-  autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell
-  autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell
+  autocmd FileType markdown setlocal spell nolist textwidth=81 complete+=kspell conceallevel=3
+  autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell conceallevel=3
 
   " Enable spellchecking for gitcommits
   autocmd FileType gitcommit setlocal spell complete+=kspell
 
   " Unset paste on InsertLeave
   autocmd InsertLeave * silent! set nopaste
+
+  " Automatic rename of tmux window
+  if exists('$TMUX') && !exists('$NORENAME')
+    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+    au VimLeave * call system('tmux set-window automatic-rename on')
+  endif
 
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
@@ -481,7 +567,7 @@ augroup vimrc
   autocmd FileType r set commentstring=#\ %s
 
   " Use -- as SQL comment string
-  autocmd FileType sql set commentstring=--\ %s
+  autocmd FileType sql setlocal commentstring=--\ %s
 
   " jrnl entries as markdown
   autocmd BufRead /tmp/jrnl* setlocal filetype=markdown sidescrolloff=0
@@ -505,11 +591,18 @@ augroup vimrc
 
   autocmd FileType c,cpp,rust,haskell,python,ruby nmap <buffer>K <Plug>(devdocs-under-cursor)
 
-  autocmd ColorScheme * highlight clear SignColumn
+  " autocmd ColorScheme * highlight clear SignColumn
 
   autocmd Filetype coffee map <buffer> <Leader>t :!teaspoon<CR>
   autocmd Filetype php    map <buffer> <Leader>t :!phpunit --colors %<CR>
-  autocmd Filetype qf     setlocal nolist wrap
+  autocmd Filetype qf     setlocal nolist wrap nobreakindent
+augroup END
+
+augroup litecorrect
+  autocmd!
+  autocmd FileType markdown,mkd call litecorrect#init()
+  autocmd FileType text call litecorrect#init()
+  autocmd FileType gitcommit call litecorrect#init()
 augroup END
 
 " }}}
