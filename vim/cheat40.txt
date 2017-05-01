@@ -469,3 +469,4 @@ Current directory        :pwd          N
 Change directory         :cd …         N
 Show the value of ‹Var›  :echo ‹Var›   N
 Show value of option     :set ‹Var›?   N
+" vim: ft=cheat40
