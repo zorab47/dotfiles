@@ -27,7 +27,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
-Plug 'beloglazov/vim-online-thesaurus'
+Plug 'beloglazov/vim-online-thesaurus', { 'on': 'Thesaurus' }
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'christoomey/vim-conflicted'
@@ -46,7 +46,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jcfaria/Vim-R-plugin', { 'for': 'r' }
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
 " Plug 'junegunn/vim-emoji'
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-journal'
@@ -80,21 +80,21 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise', { 'for': ['ruby', 'sh', 'vim'] }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml',     { 'for': 'haml' }
 Plug 'tpope/vim-markdown', { 'for': ['markdown', 'gitcommit'] }
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-ragtag', { 'for': 'eruby' }
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-tbone', { 'on': 'Twrite' }
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'vim-scripts/renumber.vim'
+Plug 'vim-scripts/renumber.vim', { 'on': 'Renumber' }
 Plug 'xiaogaozi/easy-gitlab.vim'
 Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
@@ -151,7 +151,7 @@ let g:seoul256_light_background = 256
 let g:gruvbox_italic=1                 " Enable italics in Gruvbox
 let g:gruvbox_improved_warnings=0      " Enable italics in Gruvbox
 
-if &t_Co >= 256
+if &t_Co >= 256 || has("gui_running")
   colorscheme seoul256
 
   " if &term =~ 'screen-256color' && exists('$TMUX')
