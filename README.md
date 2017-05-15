@@ -11,14 +11,14 @@ git clone https://github.com/zorab47/dotfiles ~/.dotfiles
 
 ## External Apps
 
-Optional applications which enhance bash, vim, etc.
+Optional applications which enhance the command line.
 
 - autojump
 - coreutils (dircolors)
 - exuberant-ctags
 - silversearcher-ag
 
-```
+```sh
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
 
@@ -43,16 +43,16 @@ sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md)
 - [shellcheck](https://github.com/koalaman/shellcheck)
 
-```
+```sh
 sudo apt-get install shellcheck git-extras
 ```
 
 ### Fonts
 
-[Inconsolata-g](http://leonardo-m.livejournal.com/77079.html) is my first choice
-in programming fonts.
+- [Hack](https://github.com/chrissimpkins/hack)
+- [Inconsolata-g](http://leonardo-m.livejournal.com/77079.html)
 
-```
+```bash
 fc-cache -fv  # update font caches
 ```
 
@@ -62,11 +62,20 @@ fc-cache -fv  # update font caches
 - brice
 - hirb
 - looksee
-- [sqlint](https://github.com/purcell/sqlint)
+- rubocop
+- scss_lint
 
+```sh
+gem install awesome_print brice hirb looksee rubocop scss_lint
 ```
-gem install awesome_print brice hirb looksee
-```
+
+### Vim-spiration
+
+- [Ben Orenstein](https://github.com/r00k/dotfiles)
+- [Chris Toomey](https://github.com/christoomey/dotfiles)
+- [Junegun](https://github.com/junegunn/dotfiles)
+- [Lifepillar](https://github.com/lifepillar/vimrc)
+- [Wynn Netherland](https://github.com/pengwynn/dotfiles)
 
 ## Sources
 
