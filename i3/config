@@ -264,6 +264,7 @@ bindsym Print          exec scrot -e 'mv $f ~/Pictures/Screenshots'
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Firefox" window_role="page-info"] floating enable
 for_window [window_role="jrnl"] floating enable
+for_window [class="Peek"] floating enable
 
 # hide window title bar
 for_window [class="Gnome-terminal"]   border pixel 3
