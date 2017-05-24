@@ -60,6 +60,7 @@ fc-cache -fv  # update font caches
 
 - awesome_print
 - brice
+- [bundler_diffgems](https://github.com/sinsoku/bundler_diffgems)
 - hirb
 - looksee
 - rubocop
