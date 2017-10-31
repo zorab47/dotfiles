@@ -65,11 +65,21 @@ Show <Leader> mappings   \fml          N
 Prepend to adj lines     \I            N
 Append  to adj lines     \A            N
 Edit vimrc in tab        \ev           N
+Reload Firefox tab       \r            N
 SplitjoinJoin            gJ            N
 SplitjoinSplit           gS            N
 New tab                  «C-w»e        N
 Tmux write to pane       \w           NV
 Fix last spelling error  \fw           N
+Indent line              «C-t»         I
+Unindent line            «C-d»         I
+Exec one command         «C-o»         I
+}}}
+Movement! {{{1
+Next file in directory   ]f            N
+Prev file in directory   [f            N
+Next SCM conflict marker ]n            N
+Prev SCM conflict marker [n            N
 }}}
 Alignment! {{{1
 Align on Ruby sym keys   \ak          VN
