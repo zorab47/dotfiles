@@ -144,12 +144,12 @@ install_config_dirs () {
 
   link_file "$DOTFILES_ROOT/fish" "$HOME/.config/fish"
   link_file "$DOTFILES_ROOT/dunst" "$HOME/.config/dunst"
+  link_file "$DOTFILES_ROOT/vim" "$HOME/.config/nvim"
 }
 
 setup_gitconfig "$1" "$2"
 install_dotfiles
 install_config_dirs
-
 
 echo ''
 echo '  All installed!'
