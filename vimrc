@@ -93,6 +93,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone', { 'on': 'Twrite' }
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'vimwiki/vimwiki'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim', { 'on': 'Renumber' }
 Plug 'xiaogaozi/easy-gitlab.vim'
