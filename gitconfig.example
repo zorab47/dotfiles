@@ -14,6 +14,7 @@
   rs = rebase --skip
   rn = rebase next
   m = merge --ff-only
+  put = push origin --set-upstream HEAD
 
   # Remove branches that have already been merged with master
   # a.k.a. ‘delete merged’
