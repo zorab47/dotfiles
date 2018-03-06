@@ -56,7 +56,7 @@ About {{{2
 New! {{{1
 Open file path in man    gof           N
 Open file path in term   got           N
-Gitlab open              glo           V
+GitHub open              gho           V
 Search with ag           gag‹Move›     N
 Copy file path           \cf           N
 Copy file name           \cn           N

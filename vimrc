@@ -97,6 +97,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim', { 'on': 'Renumber' }
 Plug 'xiaogaozi/easy-gitlab.vim'
+Plug 'solars/github-vim'
 Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
 " Color schemes
