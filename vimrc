@@ -269,8 +269,10 @@ map <Leader>l :w<CR>:call RunLastSpec()<CR>
 map <Leader>as :w<CR>:call RunAllSpecs()<CR>
 let g:rspec_command = "Dispatch bundle exec rspec --format=progress {spec}"
 
+let g:snipMate = {}
+let g:snipMate.override = 1
 " Edit snippets - mnemonic: (e)dit(s)nippets
-map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
+map <Leader>es :tabe ~/.vim/after/snippets/ruby.snippets<CR>
 
 nnoremap <leader>fw :FixLastSpellingError<CR>
 
