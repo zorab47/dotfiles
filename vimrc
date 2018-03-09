@@ -381,6 +381,7 @@ command! HL call <SID>hl()
 " Visual select; then `glo` to do a Gitlab Open
 let g:easy_gitlab_url = 'https://git.orm-tech.com'
 
+" Goyo {{{
 let g:goyo_width = 82
 function! s:goyo_enter()
   silent !tmux set status off
@@ -444,11 +445,11 @@ if exists(":Tabularize")
 " mnemonic: (a)lign
 
   " Ruby
-  " align "=" but not "<=", "==", or "=>".
-  nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)[=>]\@!/<CR>
-  vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)[=>]\@!/<CR>
+  " align '=' but not '!=', '<=', '==', or '=>'.
+  nmap <Leader>a= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/<CR>
+  vmap <Leader>a= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/<CR>
 
-  " align ":" but not "::"
+  " align ':' but not '::' or 'http://'
   nmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
   vmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
 
@@ -464,8 +465,8 @@ if exists(":Tabularize")
   vmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
 
   " (a)lign ruby (p)roc literals
-  nmap <Leader>ap :Tabularize /-><CR>
-  vmap <Leader>ap :Tabularize /-><CR>
+  nmap <Leader>ap :Tabularize ruby_proc<CR>
+  vmap <Leader>ap :Tabularize ruby_proc<CR>
 
   " Markdown
   nmap <Leader>a\| :Tabularize /\|<CR>
@@ -487,6 +488,9 @@ if exists(":Tabularize")
 
   " Align ruby blocks, but ignore string interpolation
   AddTabularPattern! ruby_block /[^#]\@<={/
+
+  " Align ->, proc, and lambda
+  AddTabularPattern! ruby_proc /\(->\|proc\|lambda\)
 
 endif
 " }}}
@@ -529,6 +533,10 @@ source $HOME/.vim/lightline.vim
 " }}}
 " Investigate.vim {{{
 let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
+" }}}
+" Pencil {{{
+let g:pencil#conceallevel=0
+let g:pencil#concealcursor='c'
 " }}}
 " AutoGroups {{{
 augroup vimrc
