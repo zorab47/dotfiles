@@ -1,5 +1,5 @@
 "
-" Sources of Vim inspiration
+" Sources of Vim-spiration
 "
 " - Ben Orenstein:    https://github.com/r00k/dotfiles
 " - Chris Toomey:     https://github.com/christoomey/dotfiles
@@ -16,12 +16,8 @@ endif
 
 call plug#begin()
 
-Plug 'mattly/vim-markdown-enhancements'
-Plug 'mhinz/vim-halo'
-Plug 'junegunn/vim-emoji'
-" Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
-
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Chun-Yang/vim-action-ag'
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
@@ -45,7 +41,7 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'jcfaria/Vim-R-plugin', { 'for': 'r' }
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
-" Plug 'junegunn/vim-emoji'
+Plug 'junegunn/vim-emoji'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
@@ -99,6 +95,8 @@ Plug 'vim-scripts/renumber.vim', { 'on': 'Renumber' }
 Plug 'xiaogaozi/easy-gitlab.vim'
 Plug 'solars/github-vim'
 Plug 'zorab47/vim-gams', { 'for': 'gams' }
+Plug 'vimwiki/vimwiki'
+Plug 'dbmrq/vim-ditto'
 
 " Color schemes
 Plug 'junegunn/seoul256.vim'
