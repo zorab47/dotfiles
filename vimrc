@@ -388,6 +388,11 @@ function! s:goyo_enter()
   set noshowmode
   set noshowcmd
   set scrolloff=999
+  setlocal colorcolumn=
+  set wrap
+  set linebreak
+  set nobreakindent
+  set showbreak=
   Limelight
 endfunction
 
@@ -396,12 +401,18 @@ function! s:goyo_leave()
   silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   set showmode
   set showcmd
+  set colorcolumn=81
   set scrolloff=5
+  set nowrap
+  set nolinebreak
+  set breakindent
+  let &showbreak = '↳ '
   Limelight!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" }}}
 
 " vim-slash
 " noremap <plug>(slash-after) zz
