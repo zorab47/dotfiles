@@ -276,14 +276,8 @@ map <Leader>es :tabe ~/.vim/after/snippets/ruby.snippets<CR>
 
 nnoremap <leader>fw :FixLastSpellingError<CR>
 
-" Paste from system clipboard
-map <Leader>p :set paste<CR>o<ESC>"+p:set nopaste<CR>
-
-" Yank to system clipboard
-map <Leader>y "+y
-
 " copy current file path to clipboard - mnemonic: (c)urrent(f)ilename
-nnoremap <silent> <Leader>cf :let @+ = expand("%:~")<CR>
+nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
 " copy filename to clipboard - mnemonic: (c)urrent(n)name
 nnoremap <silent> <Leader>cn :let @+ = expand("%:t")<CR>
 
