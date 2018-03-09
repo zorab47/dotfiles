@@ -19,3 +19,8 @@ if test -f ~/.config/fish/local.fish
   source ~/.config/fish/local.fish
 end
 
+if status --is-interactive
+  abbr --add be  "bundle exec"
+  abbr --add ber "bundle exec rake"
+  abbr --add ps  "ps aux"
+end
