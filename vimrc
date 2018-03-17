@@ -636,6 +636,8 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " set writebackup
+set undofile
+set undodir=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
 " }}}
 " Custom Commands {{{
 augroup vimrcEx
