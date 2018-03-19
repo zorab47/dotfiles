@@ -17,10 +17,13 @@ Optional applications which enhance the command line.
 - coreutils (dircolors)
 - exuberant-ctags
 - silversearcher-ag
+- [pspg][], Postgres Pager
 
 ```sh
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
+
+[pspg]: https://github.com/okbob/pspg
 
 ### Notifications
 
