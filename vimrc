@@ -47,7 +47,6 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-gtfo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
@@ -68,7 +67,6 @@ Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-litecorrect', { 'for': ['markdown', 'gitcommit', 'text'] }
 Plug 'rhysd/devdocs.vim', { 'on': '<Plug>(devdocs-under-cursor)' }
 Plug 'rking/ag.vim', { 'on': 'Ag' }
-" Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tomtom/tlib_vim'
@@ -280,28 +278,8 @@ nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
 " copy filename to clipboard - mnemonic: (c)urrent(n)name
 nnoremap <silent> <Leader>cn :let @+ = expand("%:t")<CR>
 
-" Leader shortcuts for Rails commands
-" map <Leader>m :Rmodel
-" map <Leader>c :Rcontroller
-" map <Leader>v :Rview
-" map <Leader>u :Runittest
-" map <Leader>f :Rfunctionaltest
-" map <Leader>i :Rintegrationtest
-" map <Leader>h :Rhelper
-" map <Leader>tm :RTmodel
-" map <Leader>tc :RTcontroller
-" map <Leader>tv :RTview
-" map <Leader>tu :RTunittest
-" map <Leader>tf :RTfunctionaltest
-" map <Leader>sm :RSmodel
-" map <Leader>sc :RScontroller
-" map <Leader>sv :RSview
-" map <Leader>su :RSunittest
-" map <Leader>sf :RSfunctionaltest
-" map <Leader>si :RSintegrationtest
-
-" map <Leader>sc :RVschema<space>
 " map <Leader>ag :tabe<CR>:Ag<space>
+
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 " ----------------------------------------------------------------------------
@@ -427,18 +405,6 @@ let ruby_indent_access_modifier_style = 'indent'
 let ruby_operators = 1
 let ruby_space_errors = 1
 let ruby_spellcheck_strings = 1
-
-" Seeing is Believing
-" Annotate every line
-" nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
-" Annotate marked lines
-" nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
-" Remove annotations
-" nmap <leader>c :%.!seeing_is_believing --clean<CR>;
-" Mark the current line for annotation
-" nmap <leader>m A # => <Esc>
-" Mark the highlighted lines for annotation
-" vmap <leader>m :norm A # => <Esc>
 
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
