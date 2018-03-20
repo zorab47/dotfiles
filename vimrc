@@ -394,6 +394,7 @@ function! s:goyo_enter()
   set linebreak
   set nobreakindent
   set showbreak=
+  setlocal nocursorline
   Limelight
 endfunction
 
@@ -407,6 +408,7 @@ function! s:goyo_leave()
   set nowrap
   set nolinebreak
   set breakindent
+  setlocal cursorline
   let &showbreak = '↳ '
   Limelight!
 endfunction
@@ -439,61 +441,6 @@ let ruby_spellcheck_strings = 1
 " Mark the highlighted lines for annotation
 " vmap <leader>m :norm A # => <Esc>
 
-" Tabularize {{{
-call plug#load('tabular')
-if exists(":Tabularize")
-" mnemonic: (a)lign
-
-  " Ruby
-  " align '=' but not '!=', '<=', '==', or '=>'.
-  nmap <Leader>a= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/<CR>
-  vmap <Leader>a= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/<CR>
-
-  " align ':' but not '::' or 'http://'
-  nmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
-  vmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
-
-  nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
-  vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
-  nmap <Leader>a> :Tabularize /=><CR>
-  vmap <Leader>a> :Tabularize /=><CR>
-  nmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
-  vmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
-
-  " hash keys (a)lign (k)eys
-  nmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
-  vmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
-
-  " (a)lign ruby (p)roc literals
-  nmap <Leader>ap :Tabularize ruby_proc<CR>
-  vmap <Leader>ap :Tabularize ruby_proc<CR>
-
-  " Markdown
-  nmap <Leader>a\| :Tabularize /\|<CR>
-  vmap <Leader>a\| :Tabularize /\|<CR>
-
-  " R script
-  nmap <Leader>a< :Tabularize /<-<CR>
-  vmap <Leader>a< :Tabularize /<-<CR>
-
-  " GAMS align on periods
-  nmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
-  vmap <Leader>a. :Tabularize /[^0-9]\@<=\.<CR>
-
-  nmap <Leader>aw :Tabularize whitespace<CR>
-  vmap <Leader>aw :Tabularize whitespace<CR>
-
-  " Align on whitespace
-  AddTabularPattern! whitespace / \+\zs/l1r0
-
-  " Align ruby blocks, but ignore string interpolation
-  AddTabularPattern! ruby_block /[^#]\@<={/
-
-  " Align ->, proc, and lambda
-  AddTabularPattern! ruby_proc /\(->\|proc\|lambda\)
-
-endif
-" }}}
 " Syntastic {{{
 let g:syntastic_ignore_files = ['.java$']
 
