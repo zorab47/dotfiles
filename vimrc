@@ -122,7 +122,10 @@ let g:vim_markdown_new_list_item_indent = 2
 " More on why: https://github.com/thoughtbot/dotfiles/pull/471
 let g:is_posix = 1
 
-syntax enable
+
+if !has('g:syntax_on')
+  syntax enable
+endif
 filetype plugin indent on     " load filetype-specific indent and plugin files
 
 " }}}
@@ -247,29 +250,29 @@ nnoremap <leader>rv :source $MYVIMRC<CR>
 nnoremap g. :normal! `[v`]<cr><left>
 
 " Tmux Write
-map <Leader>w :Twrite<CR>
+noremap <Leader>w :Twrite<CR>
 
 " edit global todo list
-map <Leader>n :tabe ~/todo.md<CR>
+noremap <Leader>n :tabe ~/todo.md<CR>
 
 " edit global improvement / tool sharpening list
 " map <Leader>i :tabe ~/tool_sharpening.md<CR>
 
 " Execute Dispatch for current file
 set shell=/bin/bash               " required for Dispatch in the fish shell
-map <Leader>d :w<CR>:Dispatch<CR>
+noremap <Leader>d :w<CR>:Dispatch<CR>
 
 " Execute RSpec for current file
-map <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
-map <Leader>s :w<CR>:call RunNearestSpec()<CR>
-map <Leader>l :w<CR>:call RunLastSpec()<CR>
-map <Leader>as :w<CR>:call RunAllSpecs()<CR>
+noremap <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
+noremap <Leader>s :w<CR>:call RunNearestSpec()<CR>
+noremap <Leader>l :w<CR>:call RunLastSpec()<CR>
+noremap <Leader>as :w<CR>:call RunAllSpecs()<CR>
 let g:rspec_command = "Dispatch bundle exec rspec --format=progress {spec}"
 
 let g:snipMate = {}
 let g:snipMate.override = 1
 " Edit snippets - mnemonic: (e)dit(s)nippets
-map <Leader>es :tabe ~/.vim/after/snippets/ruby.snippets<CR>
+noremap <Leader>es :tabe ~/.vim/after/snippets/ruby.snippets<CR>
 
 nnoremap <leader>fw :FixLastSpellingError<CR>
 
@@ -309,7 +312,7 @@ ab zOpps Opportunities
 ab <expr> zda strftime("%Y-%m-%d")
 
 " Date and time abbr: 2014-10-30 10:00
-ab <expr> zdt strftime("%Y-%m-%d %H:%M:%S")
+ab <expr> zdt strftime("%Y-%m-%d %H:%M")
 
 " }}}
 " Custom Key Mappings {{{
@@ -389,9 +392,6 @@ function! s:goyo_leave()
   let &showbreak = '↳ '
   Limelight!
 endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
 
 " vim-slash
@@ -454,8 +454,12 @@ let g:pencil#concealcursor='c'
 augroup vimrc
   autocmd!
 
+  " Goyo
+  autocmd User GoyoEnter nested call <SID>goyo_enter()
+  autocmd User GoyoLeave nested call <SID>goyo_leave()
+
   " Neomake
-  autocmd! BufWritePost * Neomake
+  autocmd BufWritePost * Neomake
 
   " Auto source vimrc on change
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
