@@ -54,11 +54,14 @@ About {{{2
   *    Acts on text under/after cursor
 }}}
 New! {{{1
-Open file path in man    gof           N
+Open file path in mgr    gof           N
 Open file path in term   got           N
 GitHub open              gho           V
-Search with ag           gag‹Move›     N
-Copy file path           \cf           N
+git hunk stage           ghs           n
+git hunk undo stage      ghu           n
+git hunk preview         ghp           n
+Search with ag           gag‹move›     n
+Copy file path           \cf           n
 Copy file name           \cn           N
 Sort motion              gs‹Move›      N
 Show <Leader> mappings   \fml          N
