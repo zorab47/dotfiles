@@ -514,14 +514,15 @@ augroup vimrc
   autocmd BufRead,BufNewFile *.cap set filetype=ruby
 
   " Setup vim-dispatch for RSpec files
-  autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = 'rspec %'
+  autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = 'bundle exec rspec %'
 
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
   autocmd FileType c,cpp,rust,haskell,python,ruby nmap <buffer>K <Plug>(devdocs-under-cursor)
 
-  " autocmd ColorScheme * highlight clear SignColumn
+  " Use shell syntax for .env files
+  autocmd! BufNewFile,BufRead .env.* setfiletype sh
 
   autocmd Filetype coffee map <buffer> <Leader>t :!teaspoon<CR>
   autocmd Filetype php    map <buffer> <Leader>t :!phpunit --colors %<CR>
