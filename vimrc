@@ -8,7 +8,6 @@
 " - Wynn Netherland:  https://github.com/pengwynn/dotfiles
 "
 " Launch Config {{{
-set nocompatible " Must be first line
 if !has('vim_starting')
   set encoding=utf-8
   scriptencoding utf-8
@@ -34,6 +33,7 @@ Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'dbmrq/vim-ditto'                                                           " Highlights overused words
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
@@ -41,10 +41,11 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'jcfaria/Vim-R-plugin', { 'for': 'r' }
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
-Plug 'junegunn/vim-emoji'
+Plug 'jszakmeister/vim-togglecursor'                                             " Toggle the cursor shape in the terminal for Vim
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-emoji'
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-gtfo'
@@ -54,7 +55,7 @@ Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'klen/python-mode', { 'for': 'python' }
-Plug 'ktonga/vim-follow-my-lead' " Showing all your <Leader> mappings `<Leader>fml`
+Plug 'ktonga/vim-follow-my-lead'                                                 " Showing all your <Leader> mappings `<Leader>fml`
 Plug 'lifepillar/pgsql.vim', { 'for': ['sql', 'pgsql', 'markdown'] }
 Plug 'lifepillar/vim-cheat40'
 Plug 'mattly/vim-markdown-enhancements', { 'for': ['markdown', 'gitcommit'] }
@@ -62,11 +63,12 @@ Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
-Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-litecorrect', { 'for': ['markdown', 'gitcommit', 'text'] }      " Lightweight auto-correction for Vim
+Plug 'reedes/vim-pencil'                                                         " Rethinking Vim as a tool for writing
 Plug 'reedes/vim-wordy'
-Plug 'reedes/vim-litecorrect', { 'for': ['markdown', 'gitcommit', 'text'] }
 Plug 'rhysd/devdocs.vim', { 'on': '<Plug>(devdocs-under-cursor)' }
 Plug 'rking/ag.vim', { 'on': 'Ag' }
+Plug 'solars/github-vim'                                                         " Adds commands to interact with GitHub repo URLs
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tomtom/tlib_vim'
@@ -83,17 +85,16 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-ragtag', { 'for': 'eruby' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'                                                         " GitHub extension for fugitive.vim
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone', { 'on': 'Twrite' }
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vimwiki/vimwiki'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim', { 'on': 'Renumber' }
+Plug 'vimwiki/vimwiki'                                                           " A personal wiki for vim
 Plug 'xiaogaozi/easy-gitlab.vim'
-Plug 'solars/github-vim'
 Plug 'zorab47/vim-gams', { 'for': 'gams' }
-Plug 'dbmrq/vim-ditto'
 
 " Color schemes
 Plug 'junegunn/seoul256.vim'
@@ -191,8 +192,7 @@ set listchars=                " Reset listchars
 set listchars+=tab:▸\         " Symbols to use for invisible characters
 set listchars+=trail:·        " trailing whitespace
 set listchars+=nbsp:•         " non-breaking space
-" set listchars+=precedes:←
-set listchars+=extends:→
+set listchars+=extends:→      " line continues beyond right of the screen
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set shortmess+=c              " Suppress ins-completion messages
@@ -220,12 +220,6 @@ set hidden                    " Allow buffer switching without saving
 let &showbreak = '↳ '
 set breakindent
 set breakindentopt=sbr
-
-" Show block cursor in Normal mode and line cursor in Insert mode
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
 
 set ttyfast                   " Send more characters for redraws
 
@@ -357,6 +351,11 @@ command! HL call <SID>hl()
 
 " Plugin Configs
 " --------------
+
+" vim-gitgutter
+nmap ghs <Plug>GitGutterStageHunk
+nmap ghu <Plug>GitGutterUndoHunk
+nmap ghp <Plug>GitGutterPreviewHunk
 
 " Visual select; then `glo` to do a Gitlab Open
 let g:easy_gitlab_url = 'https://git.orm-tech.com'
