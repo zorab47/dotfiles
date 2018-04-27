@@ -1,0 +1,19 @@
+Morning Checklist
+
+## Sweep
+
+- [ ] Close Slack / IRC / Messages
+- [ ] Process personal email inbox (remember 2-minute rule)
+- [ ] Process work email inbox (remember 2-minute rule)
+- [ ] Process Slack notifications
+- [ ] Check work calendar, anything pressing?
+
+## Process
+
+- [ ] Process Things inbox (top to bottom)
+
+## Start
+
+- [ ] Switch to Stitch Fix area
+- [ ] If no items in Stitch Fix, go flag some things
+- [ ] Pick one and start working
