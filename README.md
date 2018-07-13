@@ -45,6 +45,7 @@ sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md)
 - [shellcheck](https://github.com/koalaman/shellcheck)
+- [yamllint](https://github.com/adrienverge/yamllint)
 
 ```sh
 sudo apt-get install shellcheck git-extras
