@@ -13,6 +13,8 @@ set cpo&vim
 " align '=' but not '!=', '<=', '==', or '=>'.
 nmap <Leader>a= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/<CR>
 vmap <Leader>a= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/<CR>
+nmap <Leader>ac= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/r1c1l1<CR>
+vmap <Leader>ac= :Tabularize /[^!<=]\@<=\(=\)[=>]\@!/r1c1l1<CR>
 
 " align ':' but not '::' or 'http://'
 nmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
@@ -20,14 +22,21 @@ vmap <Leader>a: :Tabularize /[^:]\@<=:\/\@!\zs:\@!<CR>
 
 nmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
 vmap <Leader>a{ :Tabularize /[^#]\@<={<CR>
+
 nmap <Leader>a> :Tabularize /=><CR>
 vmap <Leader>a> :Tabularize /=><CR>
+nmap <Leader>ac> :Tabularize /=>/r1c1l1<CR>
+vmap <Leader>ac> :Tabularize /=>/r1c1l1<CR>
+
 nmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
 vmap <Leader>a, :Tabularize /,\zs/l1r0<CR>
 
 " hash keys (a)lign (k)eys
 nmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
 vmap <Leader>ak :Tabularize /\w\+:[:]\@!<CR>
+
+nmap <Leader>ack :Tabularize /:[:]\@!/r0c1l1<CR>
+vmap <Leader>ack :Tabularize /:[:]\@!/r0c1l1<CR>
 
 " (a)lign ruby (p)roc literals
 nmap <Leader>ap :Tabularize ruby_proc<CR>
