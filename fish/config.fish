@@ -24,3 +24,8 @@ if status --is-interactive
   abbr --add ber "bundle exec rake"
   abbr --add ps  "ps aux"
 end
+
+if test -f ~/.config/fish/local.fish
+  # Local config, credentials, etc.
+  source ~/.config/fish/local.fish
+end
