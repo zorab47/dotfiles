@@ -23,6 +23,14 @@ Optional applications which enhance the command line.
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
 
+### macOS Apps
+
+- [Alfred](https://www.alfredapp.com/)
+- [Fantastical](https://flexibits.com/fantastical)
+- Flycut
+- [Muzzel](https://muzzleapp.com/)
+- [Sound Control](https://staticz.com/soundcontrol/)
+
 [pspg]: https://github.com/okbob/pspg
 
 ### Notifications
