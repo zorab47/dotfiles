@@ -28,6 +28,9 @@
 
   # http://jerodsanto.net/2014/09/git-a-list-of-commits-on-one-branch-but-not-the-other
   contrast = log --left-right --graph --cherry-pick --oneline
+
+  # https://www.erikschierboom.com/2020/02/17/cleaning-up-local-git-branches-deleted-on-a-remote/
+  gone = "!git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
 [color]
   status = auto
   diff = auto
@@ -55,12 +58,25 @@
   autocorrect = 1
 [core]
   excludesfile = ${HOME}/.gitignore
-  pager = diff-highlight | less -FRSX
+  pager = delta
 [init]
   templatedir = ~/.git_template
+	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only --features=interactive
 [push]
   default = simple
 [merge]
-  tool = vimdiff
+  tool = nvim -d
+  ; Trying out zdiff3 for merge conflicts
+  conflictstyle = zdiff3
 [mailmap]
   file = ${HOME}/.mailmap
+[branch]
+  sort = committerdate
+[tag]
+  sort = taggerdate
+[fetch]
+  prune = true
+[delta]
+    theme = Solarized (dark)
