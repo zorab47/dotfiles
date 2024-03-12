@@ -53,7 +53,6 @@
   renamelimit = 0
   renames = copies
   compactionHeuristic = true
-192.168.1.10
 [help]
   autocorrect = 1
 [core]
