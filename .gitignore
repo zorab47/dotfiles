@@ -4,6 +4,7 @@ vim/.netrwhist
 vim/plugged
 vim/shada
 **/doc/tags
+.DS_Store
 
 fonts/Library
 
@@ -21,4 +22,6 @@ fish/functions/fish_title.fish
 fish/functions/fzf_key_bindings.fish
 fish/functions/installer.fish
 fish/functions/last_job_id.fish
+fish/functions/nvm.fish
+fish/functions/_*.fish
 
