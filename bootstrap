@@ -147,6 +147,11 @@ install_config_dirs () {
   link_file "$DOTFILES_ROOT/vim" "$HOME/.config/nvim"
 }
 
+setup_directories () {
+  info 'create directories'
+  mkdir "$HOME/.vim-tmp"
+}
+
 setup_gitconfig "$1" "$2"
 install_dotfiles
 install_config_dirs
