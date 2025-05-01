@@ -25,11 +25,29 @@ sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 
 ### macOS Apps
 
+- [1Password](https://1password.com/)
+- [1Blocker](https://1blocker.com/)
+- [Acorn](https://flyingmeat.com/acorn/)
 - [Alfred](https://www.alfredapp.com/)
+- [AppCleaner](https://freemacsoft.net/appcleaner/)
+- [CleanShotX](https://cleanshot.com/)
+- [Cocktail](https://www.maintain.se/cocktail/)
+- [Divvy](https://mizage.com/divvy/)
+- Dropbox
+- Elgato Camera Hub
+- Elgato Control Center
 - [Fantastical](https://flexibits.com/fantastical)
-- Flycut
+- [Firefox](https://www.mozilla.org/en-US/firefox/)
+- [In Your Face](https://www.inyourface.app/)
 - [Muzzel](https://muzzleapp.com/)
+- [Rectangle](https://rectangleapp.com/)
+- [Rescue Time](https://www.rescuetime.com/)
 - [Sound Control](https://staticz.com/soundcontrol/)
+- [VimR](https://vimr.org/)
+
+#### Old
+
+- Flycut
 
 [pspg]: https://github.com/okbob/pspg
 
