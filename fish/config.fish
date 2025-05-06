@@ -1,23 +1,15 @@
+/opt/homebrew/bin/brew shellenv | source
 
 set -xg EDITOR nvim
-set -xg PATH ~/.bin ~/bin ~/.local/bin $PATH
 set -xg PAGER "less -FRSX"
+set -xg PATH ~/.bin ~/bin ~/.local/bin $HOMEBREW_PREFIX/opt/findutils/libexec/gnubin $PATH
 
-source /usr/share/autojump/autojump.fish
-source /usr/local/share/chruby/chruby.fish
+[ -f $HOMEBREW_PREFIX/share/autojump/autojump.fish ]; \
+  and source $HOMEBREW_PREFIX/share/autojump/autojump.fish
 
 source ~/.config/fish/conf.d/bundle_exec.fish
 
-set fisher_home ~/.local/share/fisherman
-set fisher_config ~/.config/fisherman
-# source $fisher_home/config.fish
-
-chruby 2.3.4
-
-if test -f ~/.config/fish/local.fish
-  # Local config, credentials, etc.
-  source ~/.config/fish/local.fish
-end
+chruby 3.3
 
 if status --is-interactive
   abbr --add be  "bundle exec"
