@@ -1,6 +1,7 @@
 # tap isn't needed for homebrew/core
 # tap "homebrew/cask"
 
+brew "autojump"
 brew "chruby"
 brew "chruby-fish"
 brew "csvkit"
@@ -28,9 +29,15 @@ brew "yamllint"
 brew "yarn"
 brew "universal-ctags"
 
+# Development
+brew "postgresql"
+
 # cask "bitbar"
 cask "iterm2"
 cask "1password-cli"
+cask "1password"
+cask "alfred"
+cask "visual-studio-code"
 
 # brew "mas"
 
