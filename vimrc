@@ -37,6 +37,7 @@ Plug 'dbmrq/vim-ditto'                                                          
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
+Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'jcfaria/Vim-R-plugin', { 'for': 'r' }
@@ -231,6 +232,7 @@ endif
 " }}}
 " Searching {{{
 set gdefault                  " add the `g` flag to search/replace by default
+set tags^=./.git/tags;        " add `.git/tags` to tags path
 " }}}
 
 " Leader Shortcuts {{{
